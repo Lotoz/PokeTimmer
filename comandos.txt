@@ -1,0 +1,83 @@
+Creacion:
+ python3 -m venv venv 
+
+Para iniciar el trabajo en el proyecto siempre se ejecuta:
+source venv/bin/activate
+
+Instalacion de librerias
+pip install django djangorestframework django-cors-headers djangorestframework-simplejwt Pillow
+
+Creacion del back
+django-admin startproject backend
+
+Iniciar api
+cd backend
+python manage.py startapp api
+
+Luego de ello, modificacmos la settings segun necesidad y agregamos los modelos a la app.
+
+Luego de ello ejecutamos los comandos 
+python manage.py makemigrations
+python manage.py migrate
+
+Creamos el super usuario
+python manage.py createsuperuser
+Super usuario:
+Lotoz 
+email : lotoz@poketimmer.com
+Zamira2003.
+
+#Cambiar password
+python manage.py changepassword Lotoz
+
+Registramos las tablas en el admin.py para poder gestionarlas desde el panel de administracion de django
+
+Ahora dentro de api, crearemos serializers.py para convertir los modelos a formato JSON y viceversa.
+Luego de ello, creamos las vistas en views.py y las rutas en urls.py para exponer la API.
+
+Luego de agregar las urls, al ejecutar con python manage.py runserver
+podemos acceder a la API en http://localhost:8000/api/ y al panel de administracion en http://localhost:8000/admin/ con el super usuario creado.
+Si no hacemos login, veremos que la api reniega, pero si hacemos login, la api funciona correctamente.
+JWT no tiene registro, pero se crea manualmente.
+
+FUERA DEL ENTORNO ENV, creamos el front con:
+# 1. Crear el proyecto con Vite (es mucho más rápido que el antiguo CLI)
+npm create vite@latest frontend -- --template vue
+
+# 2. Entrar a la carpeta
+cd frontend
+
+# 3. Instalar las dependencias básicas
+npm install
+
+# 4. Instalar las librerías clave para tu proyecto:
+# axios: Para conectar con Django
+# pinia: Para guardar los Pokemon y el usuario en memoria
+# vue-router: Para navegar entre el Login, el Dashboard y el PC
+npm install axios pinia vue-router
+
+Borramos el hello wordl
+
+Luego de crear todo
+Instalamos electron
+npm install electron --save-dev
+
+SALIR DE ENTORNO
+deactivate
+
+#Para ejecutar el generar pokedex
+python generar_pokedex.py
+# para cargar datos
+python manage.py cargar_pokedex
+
+
+Iniciar proyecto
+python manage.py runserver
+npm run dev
+npm run electron
+
+
+User de prueba register
+Paco
+paco@paco.com
+paco12345.
