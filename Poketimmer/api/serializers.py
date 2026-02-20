@@ -3,12 +3,15 @@ from .models import Usuario, PokedexEntry, PokemonUsuario, Tarea, Region
 
 # Serializer para ver las especies (La Pokedex Global)
 class PokedexSerializer(serializers.ModelSerializer):
-    # Traemos el nombre de la región en vez de solo el ID, es mas estetico para el frontend
     region_nombre = serializers.CharField(source='region.nombre', read_only=True)
     
     class Meta:
         model = PokedexEntry
-        fields = ['id', 'numero', 'nombre', 'tipo_principal', 'region_nombre', 'sprite_url']
+        # AÑADIDO: 'sprite_shiny_url' para que el frontend pueda previsualizarlo
+        fields = [
+            'id', 'numero', 'nombre', 'tipo_principal', 
+            'tipo_secundario', 'region_nombre', 'sprite_url', 'sprite_shiny_url'
+        ]
 
 # Serializer para TUS Pokemon (PC y Equipo)
 class MiPokemonSerializer(serializers.ModelSerializer):
@@ -16,39 +19,50 @@ class MiPokemonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PokemonUsuario
-        fields = ['id', 'apodo', 'nivel', 'experiencia', 'en_equipo', 'especie', 'especie_info']
+        # AÑADIDO: 'es_shiny' para saber qué sprite mostrar en el Dashboard/PC
+        fields = ['id', 'apodo', 'nivel', 'experiencia', 'en_equipo', 'es_shiny', 'especie', 'especie_info']
         read_only_fields = ['nivel', 'experiencia', 'entrenador'] 
 
     def validate_en_equipo(self, value):
-        # Si el usuario está intentando poner este pokemon en su equipo
         if value:
             request = self.context.get('request')
-            # Contamos cuántos pokemon ya tiene en el equipo
             equipo_actual = PokemonUsuario.objects.filter(entrenador=request.user, en_equipo=True).count()
             
-            # Si estamos editando un pokemon que YA estaba en el equipo, lo permitimos
             if self.instance and self.instance.en_equipo:
                 return value
                 
-            # Si ya tiene 6, bloqueamos la acción
             if equipo_actual >= 6:
                 raise serializers.ValidationError("¡Tu equipo ya está lleno! No puedes tener más de 6 Pokémon activos.")
         return value
-    
-# Serializer de Tareas (Pomodoro)
+
+# Los demás serializers se mantienen igual
 class TareaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tarea
         fields = '__all__'
         read_only_fields = ['usuario', 'fecha_creacion']
 
-# Serializer de Usuario (Perfil)
 class UsuarioSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, required=False, allow_blank=True)
+
     class Meta:
         model = Usuario
-        fields = ['id', 'username', 'email', 'foto_perfil', 'tema_app', 'pomo_tiempo_trabajo', 'pomo_tiempo_descanso']
+        fields = ['id', 'username', 'email', 'foto_perfil', 'tema_app', 'pomo_tiempo_trabajo', 'pomo_tiempo_descanso', 'password']
+    
+    def update(self, instance, validated_data):
+        password = validated_data.pop('password', None)
+        
+        # Actualizar otros campos
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        
+        # Si se proporciona una contraseña, establecerla correctamente
+        if password:
+            instance.set_password(password)
+        
+        instance.save()
+        return instance
 
-# Register para JWT (Registro de Usuario), no viene por default por ende lo creamos
 class RegistroSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -57,7 +71,6 @@ class RegistroSerializer(serializers.ModelSerializer):
         fields = ('username', 'password', 'email', 'foto_perfil')
 
     def create(self, validated_data):
-        # Es CRÍTICO usar create_user para que la contraseña se encripte
         user = Usuario.objects.create_user(
             username=validated_data['username'],
             password=validated_data['password'],

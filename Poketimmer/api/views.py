@@ -58,12 +58,18 @@ class PokedexViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 # --- USUARIOS Y REGISTRO ---
-class UsuarioViewSet(viewsets.ReadOnlyModelViewSet):
+class UsuarioViewSet(viewsets.ModelViewSet):
     serializer_class = UsuarioSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Usuario.objects.filter(id=self.request.user.id)
+    
+    def perform_update(self, serializer):
+        # Aseguramos que el usuario solo pueda editar su propio perfil
+        if serializer.instance.id != self.request.user.id:
+            raise PermissionDenied("No puedes editar el perfil de otro usuario.")
+        serializer.save()
     
 class RegistroView(generics.CreateAPIView):
     queryset = Usuario.objects.all()

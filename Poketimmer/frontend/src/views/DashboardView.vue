@@ -30,6 +30,14 @@ const cargarDatos = async () => {
     if (error.response?.status === 401) router.push("/");
   }
 };
+const actualizarNivel = async () => {
+  try {
+    const pokemonRes = await api.get("mis-pokemon/");
+    equipo.value = pokemonRes.data.filter((p) => p.en_equipo);
+  } catch (error) {
+    if (error.response?.status === 401) router.push("/");
+  }
+};
 
 const agregarTarea = async (titulo) => {
   try {
@@ -44,6 +52,27 @@ const toggleCompletada = async (tarea) => {
   try {
     await api.patch(`tareas/${tarea.id}/`, { completada: !tarea.completada });
     tarea.completada = !tarea.completada;
+
+    // Si la tarea se completó, desaparece después de 5 segundos
+    if (tarea.completada) {
+      setTimeout(() => {
+        tareas.value = tareas.value.filter((t) => t.id !== tarea.id);
+      }, 5000);
+    }
+
+    actualizarNivel(); // Actualizamos el nivel del equipo después de completar una tarea
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const editarTarea = async (tareaData) => {
+  try {
+    await api.patch(`tareas/${tareaData.id}/`, { titulo: tareaData.titulo });
+    const tareaIndex = tareas.value.findIndex((t) => t.id === tareaData.id);
+    if (tareaIndex !== -1) {
+      tareas.value[tareaIndex].titulo = tareaData.titulo;
+    }
   } catch (e) {
     console.error(e);
   }
@@ -53,6 +82,7 @@ const eliminarTarea = async (id) => {
   try {
     await api.post("tareas/borrar/", { id: id });
     tareas.value = tareas.value.filter((t) => t.id !== id);
+    actualizarNivel(); // Actualizamos el nivel del equipo después de eliminar una tarea
   } catch (e) {
     console.error(e);
   }
@@ -80,29 +110,37 @@ onMounted(cargarDatos);
 </script>
 
 <template>
-  <div class="dashboard-container">
-    <header class="top-bar">
-      <h2>⭐ Entrenador {{ usuario.username }}</h2>
-      <div class="nav-buttons">
-        <button @click="router.push('/pc')" class="btn-nav">🖥️ PC</button>
-        <button @click="router.push('/pokedex')" class="btn-nav">
-          📖 Pokedex
-        </button>
-        <button @click="logout" class="btn-logout">Salir</button>
+  <div class="page-shell">
+    <div class="page-card">
+      <div class="dashboard-container">
+        <header class="top-bar">
+          <h2>⭐ Entrenador {{ usuario.username }}</h2>
+          <div class="nav-buttons">
+            <button @click="router.push('/pc')" class="btn-nav">🖥️ PC</button>
+            <button @click="router.push('/pokedex')" class="btn-nav">
+              📖 Pokedex
+            </button>
+            <button @click="router.push('/perfil')" class="btn-nav">
+              ⚙️ Perfil
+            </button>
+            <button @click="logout" class="btn-logout">Salir</button>
+          </div>
+        </header>
+
+        <div class="main-layout">
+          <ListaTareas
+            :tareas="tareas"
+            @agregar="agregarTarea"
+            @toggle="toggleCompletada"
+            @editar="editarTarea"
+            @eliminar="eliminarTarea" />
+
+          <PomodoroTimer @pomodoro-terminado="registrarEntrenamiento" />
+        </div>
+
+        <EquipoPokemon :equipo="equipo" />
       </div>
-    </header>
-
-    <div class="main-layout">
-      <ListaTareas
-        :tareas="tareas"
-        @agregar="agregarTarea"
-        @toggle="toggleCompletada"
-        @eliminar="eliminarTarea" />
-
-      <PomodoroTimer @pomodoro-terminado="registrarEntrenamiento" />
     </div>
-
-    <EquipoPokemon :equipo="equipo" />
   </div>
 </template>
 
@@ -120,24 +158,29 @@ onMounted(cargarDatos);
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  border-bottom: 4px solid #860000;
+  border-bottom: 4px solid var(--secondary);
   padding-bottom: 10px;
+}
+.top-bar h2 {
+  color: var(--headline);
 }
 .nav-buttons button {
   margin-left: 10px;
   padding: 8px 15px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  border: none;
-  font-weight: bold;
+  border: 3px solid var(--stroke);
+  font-weight: 800;
+  background: var(--button);
+  color: var(--button-text);
 }
 .btn-nav {
-  background: #cc9a0f;
-  color: white;
+  background: var(--highlight);
 }
 .btn-logout {
-  background: #e74c3c;
-  color: white;
+  background: var(--tertiary);
+  color: var(--headline);
+  border-color: var(--stroke);
 }
 .main-layout {
   display: grid;
@@ -145,5 +188,14 @@ onMounted(cargarDatos);
   gap: 20px;
   margin-bottom: 20px;
   flex-grow: 1;
+}
+
+@media (max-width: 880px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+  .nav-buttons {
+    margin-top: 10px;
+  }
 }
 </style>

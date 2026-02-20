@@ -66,11 +66,11 @@ const resetTimer = () => {
 
 <style scoped>
 .panel {
-  background: #b93f37;
-  border-radius: 10px;
-  padding: 20px;
-  border: 4px solid #ae7a00;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background: rgba(242, 238, 245, 0.96);
+  border-radius: 12px;
+  padding: 18px;
+  border: 3px solid var(--stroke);
+  box-shadow: 8px 8px 0px rgba(153, 79, 243, 0.06);
 }
 .pomodoro-panel {
   display: flex;
@@ -79,46 +79,58 @@ const resetTimer = () => {
   align-items: center;
 }
 .reloj-marco {
-  background: #2f0300;
-  padding: 20px 40px;
-  border-radius: 15px;
-  border: 6px solid #c48300;
-  margin-bottom: 20px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  background: var(--main);
+  padding: 18px 32px;
+  border-radius: 14px;
+  border: 4px solid var(--stroke);
+  margin-bottom: 16px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.04);
 }
 .timer-display {
-  font-size: 7rem;
-  font-weight: bold;
-  color: #952ecc;
-  text-shadow: 0 0 10px #240059;
+  font-size: 4.2rem;
+  font-weight: 900;
+  color: var(--secondary);
+  letter-spacing: 1px;
 }
 .controls button {
-  font-size: 1.5rem;
-  margin: 10px;
-  padding: 15px 30px;
-  border: none;
+  font-size: 1rem;
+  margin: 8px;
+  padding: 10px 18px;
+  border: 3px solid var(--stroke);
   border-radius: 8px;
   cursor: pointer;
   text-transform: uppercase;
+  font-weight: 800;
 }
 .btn-start {
-  background: #e67e22;
-  color: white;
-  border-bottom: 4px solid #d35400;
+  background: var(--button);
+  color: var(--button-text);
 }
 .btn-stop {
-  background: #e74c3c;
-  color: white;
-  border-bottom: 4px solid #c0392b;
+  background: var(--tertiary);
+  color: var(--headline);
 }
 .btn-reset {
-  background: #95a5a6;
-  color: white;
-  border-bottom: 4px solid #7f8c8d;
+  background: transparent;
+  color: var(--paragraph);
+  border-style: dashed;
 }
 .status-text {
-  font-size: 1.5rem;
-  color: #f1c40f;
-  margin-top: 15px;
+  font-size: 1rem;
+  color: var(--paragraph);
+  margin-top: 12px;
+}
+
+@media (max-width: 480px) {
+  .timer-display {
+    font-size: 2.4rem;
+  }
+  .reloj-marco {
+    padding: 12px 18px;
+  }
+  .controls button {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
 }
 </style>

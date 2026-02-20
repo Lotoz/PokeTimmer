@@ -25,9 +25,10 @@ class PokedexEntry(models.Model):
     numero = models.IntegerField(unique=True) 
     nombre = models.CharField(max_length=100)
     tipo_principal = models.CharField(max_length=50)
+    tipo_secundario = models.CharField(max_length=50, null=True, blank=True)
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
     sprite_url = models.CharField(max_length=255, blank=True)
-    
+    sprite_shiny_url = models.CharField(max_length=255, blank=True, null=True) 
     # NUEVOS CAMPOS PARA LA EVOLUCIÓN
     evolucion_siguiente = models.ForeignKey(
         'self', 
@@ -50,7 +51,7 @@ class PokemonUsuario(models.Model):
     experiencia = models.IntegerField(default=0)
     en_equipo = models.BooleanField(default=False) # ¿Está en el dashboard?
     fecha_captura = models.DateTimeField(auto_now_add=True)
-
+    es_shiny = models.BooleanField(default=False) # Para saber si el pokemon capturado es shiny o no
     def __str__(self):
         return f"{self.apodo or self.especie.nombre} de {self.entrenador.username}"
     #Para subir de nivel, se llama cada vez que el usuario gana experiencia (Ej: Completa tareas)

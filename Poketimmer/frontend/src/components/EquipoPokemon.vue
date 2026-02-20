@@ -38,29 +38,29 @@ defineProps({
 
 <style scoped>
 .panel {
-  background: #b93f37;
-  border-radius: 10px;
-  padding: 20px;
-  border: 4px solid #ae7a00;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background: rgba(242, 238, 245, 0.96);
+  border-radius: 12px;
+  padding: 18px;
+  border: 3px solid var(--stroke);
+  box-shadow: 8px 8px 0px rgba(153, 79, 243, 0.06);
 }
 .equipo-panel {
   height: auto;
 }
 .pokemon-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
 }
 .poke-card {
-  background: #fc9a9a;
+  background: var(--elements-bg);
   border-radius: 10px;
-  padding: 10px;
+  padding: 12px;
   text-align: center;
-  border: 2px solid #7f8c8d;
+  border: 3px solid var(--stroke);
 }
 .poke-sprite-wrapper {
-  background: #ecf0f1;
+  background: var(--main);
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -68,7 +68,7 @@ defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid #bdc3c7;
+  border: 3px solid var(--stroke);
 }
 .poke-card img {
   width: 70px;
@@ -80,30 +80,38 @@ defineProps({
   flex-direction: column;
 }
 .poke-name {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 5px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  color: var(--headline);
 }
 .barra-exp {
-  height: 6px;
-  background: #2c3e50;
-  border-radius: 3px;
-  margin-bottom: 5px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  margin-bottom: 6px;
   overflow: hidden;
 }
 .barra-exp .fill {
   height: 100%;
-  background: #2bff2b;
+  background: var(--highlight);
 }
 .poke-lvl {
-  color: #733fff;
+  color: var(--secondary);
+  font-weight: 700;
 }
 .empty-slot {
-  border: 2px dashed #7f8c8d;
+  border: 2px dashed rgba(0, 0, 0, 0.08);
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #7f8c8d;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 720px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>

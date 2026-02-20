@@ -8,13 +8,13 @@
         "description": "A strange seed was planted on its back at birth. The plant sprouts and grows with this POKéMON.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "A strange seed was planted on its back at birth. The plant sprouts and grows with this POKéMON."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/BulbasaurSprite.png",
-            "Poketimmer/api/templates/pokemon/BulbasaurShinySprite.png"
+            "public/pokemon/normal/bulbasaur.png",
+            "public/pokemon/shiny/bulbasaur.png"
         ],
         "next_evolution": "0002",
         "evolution_level": 16
@@ -28,13 +28,13 @@
         "description": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/IvysaurSprite.png",
-            "Poketimmer/api/templates/pokemon/IvysaurShinySprite.png"
+            "public/pokemon/normal/ivysaur.png",
+            "public/pokemon/shiny/ivysaur.png"
         ],
         "next_evolution": "0003",
         "evolution_level": 32
@@ -48,13 +48,13 @@
         "description": "The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/VenusaurSprite.png",
-            "Poketimmer/api/templates/pokemon/VenusaurShinySprite.png"
+            "public/pokemon/normal/venusaur.png",
+            "public/pokemon/shiny/venusaur.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -67,13 +67,13 @@
         "description": "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/CharmanderSprite.png",
-            "Poketimmer/api/templates/pokemon/CharmanderShinySprite.png"
+            "public/pokemon/normal/charmander.png",
+            "public/pokemon/shiny/charmander.png"
         ],
         "next_evolution": "0005",
         "evolution_level": 16
@@ -86,13 +86,13 @@
         "description": "When it swings its burning tail, it elevates the temperature to unbearably high levels.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "When it swings its burning tail, it elevates the temperature to unbearably high levels."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/CharmeleonSprite.png",
-            "Poketimmer/api/templates/pokemon/CharmeleonShinySprite.png"
+            "public/pokemon/normal/charmeleon.png",
+            "public/pokemon/shiny/charmeleon.png"
         ],
         "next_evolution": "0006",
         "evolution_level": 36
@@ -106,13 +106,13 @@
         "description": "Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/CharizardSprite.png",
-            "Poketimmer/api/templates/pokemon/CharizardShinySprite.png"
+            "public/pokemon/normal/charizard.png",
+            "public/pokemon/shiny/charizard.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -125,13 +125,13 @@
         "description": "After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/SquirtleSprite.png",
-            "Poketimmer/api/templates/pokemon/SquirtleShinySprite.png"
+            "public/pokemon/normal/squirtle.png",
+            "public/pokemon/shiny/squirtle.png"
         ],
         "next_evolution": "0008",
         "evolution_level": 16
@@ -144,13 +144,13 @@
         "description": "Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/WartortleSprite.png",
-            "Poketimmer/api/templates/pokemon/WartortleShinySprite.png"
+            "public/pokemon/normal/wartortle.png",
+            "public/pokemon/shiny/wartortle.png"
         ],
         "next_evolution": "0009",
         "evolution_level": 36
@@ -163,13 +163,13 @@
         "description": "A brutal POKéMON with pressurized water jets on its shell. They are used for high speed tackles.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "A brutal POKéMON with pressurized water jets on its shell. They are used for high speed tackles."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/BlastoiseSprite.png",
-            "Poketimmer/api/templates/pokemon/BlastoiseShinySprite.png"
+            "public/pokemon/normal/blastoise.png",
+            "public/pokemon/shiny/blastoise.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -182,13 +182,13 @@
         "description": "Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/CaterpieSprite.png",
-            "Poketimmer/api/templates/pokemon/CaterpieShinySprite.png"
+            "public/pokemon/normal/caterpie.png",
+            "public/pokemon/shiny/caterpie.png"
         ],
         "next_evolution": "0011",
         "evolution_level": 7
@@ -201,13 +201,13 @@
         "description": "This POKéMON is vulnerable to attack while its shell is soft, exposing its weak and tender body.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "This POKéMON is vulnerable to attack while its shell is soft, exposing its weak and tender body."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/MetapodSprite.png",
-            "Poketimmer/api/templates/pokemon/MetapodShinySprite.png"
+            "public/pokemon/normal/metapod.png",
+            "public/pokemon/shiny/metapod.png"
         ],
         "next_evolution": "0012",
         "evolution_level": 10
@@ -221,13 +221,13 @@
         "description": "In battle, it flaps its wings at high speed to release highly toxic dust into the air.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "In battle, it flaps its wings at high speed to release highly toxic dust into the air."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/ButterfreeSprite.png",
-            "Poketimmer/api/templates/pokemon/ButterfreeShinySprite.png"
+            "public/pokemon/normal/butterfree.png",
+            "public/pokemon/shiny/butterfree.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -241,13 +241,13 @@
         "description": "Often found in forests, eating leaves. It has a sharp venomous stinger on its head.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Often found in forests, eating leaves. It has a sharp venomous stinger on its head."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/WeedleSprite.png",
-            "Poketimmer/api/templates/pokemon/WeedleShinySprite.png"
+            "public/pokemon/normal/weedle.png",
+            "public/pokemon/shiny/weedle.png"
         ],
         "next_evolution": "0014",
         "evolution_level": 7
@@ -261,13 +261,13 @@
         "description": "Almost incapable of moving, this POKéMON can only harden its shell to protect itself from predators.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Almost incapable of moving, this POKéMON can only harden its shell to protect itself from predators."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/KakunaSprite.png",
-            "Poketimmer/api/templates/pokemon/KakunaShinySprite.png"
+            "public/pokemon/normal/kakuna.png",
+            "public/pokemon/shiny/kakuna.png"
         ],
         "next_evolution": "0015",
         "evolution_level": 10
@@ -281,13 +281,13 @@
         "description": "It has three poisonous stingers on its forelegs and its tail. They are used to jab its enemy repeatedly.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "It has three poisonous stingers on its forelegs and its tail. They are used to jab its enemy repeatedly."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/BeedrillSprite.png",
-            "Poketimmer/api/templates/pokemon/BeedrillShinySprite.png"
+            "public/pokemon/normal/beedrill.png",
+            "public/pokemon/shiny/beedrill.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -301,13 +301,13 @@
         "description": "A common sight in forests and woods. It flaps its wings at ground level to kick up blinding sand.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "A common sight in forests and woods. It flaps its wings at ground level to kick up blinding sand."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PidgeySprite.png",
-            "Poketimmer/api/templates/pokemon/PidgeyShinySprite.png"
+            "public/pokemon/normal/pidgey.png",
+            "public/pokemon/shiny/pidgey.png"
         ],
         "next_evolution": "0017",
         "evolution_level": 18
@@ -321,13 +321,13 @@
         "description": "Very protective of its sprawling territorial area, this POKéMON will fiercely peck at any intruder.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Very protective of its sprawling territorial area, this POKéMON will fiercely peck at any intruder."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PidgeottoSprite.png",
-            "Poketimmer/api/templates/pokemon/PidgeottoShinySprite.png"
+            "public/pokemon/normal/pidgeotto.png",
+            "public/pokemon/shiny/pidgeotto.png"
         ],
         "next_evolution": "0018",
         "evolution_level": 36
@@ -341,13 +341,13 @@
         "description": "When hunting, it skims the surface of water at high speed to pick off unwary prey such as MAGIKARP.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "When hunting, it skims the surface of water at high speed to pick off unwary prey such as MAGIKARP."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PidgeotSprite.png",
-            "Poketimmer/api/templates/pokemon/PidgeotShinySprite.png"
+            "public/pokemon/normal/pidgeot.png",
+            "public/pokemon/shiny/pidgeot.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -360,13 +360,13 @@
         "description": "Bites anything when it attacks. Small and very quick, it is a common sight in many places.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Bites anything when it attacks. Small and very quick, it is a common sight in many places."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/RattataSprite.png",
-            "Poketimmer/api/templates/pokemon/RattataShinySprite.png"
+            "public/pokemon/normal/rattata.png",
+            "public/pokemon/shiny/rattata.png"
         ],
         "next_evolution": "0020",
         "evolution_level": 20
@@ -379,13 +379,13 @@
         "description": "It uses its whis­ kers to maintain its balance. It apparently slows down if they are cut off.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "It uses its whis­ kers to maintain its balance. It apparently slows down if they are cut off."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/RaticateSprite.png",
-            "Poketimmer/api/templates/pokemon/RaticateShinySprite.png"
+            "public/pokemon/normal/raticate.png",
+            "public/pokemon/shiny/raticate.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -399,13 +399,13 @@
         "description": "It flaps its small wings busily to fly. Using its beak, it searches in grass for prey.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "It flaps its small wings busily to fly. Using its beak, it searches in grass for prey."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/SpearowSprite.png",
-            "Poketimmer/api/templates/pokemon/SpearowShinySprite.png"
+            "public/pokemon/normal/spearow.png",
+            "public/pokemon/shiny/spearow.png"
         ],
         "next_evolution": "0022",
         "evolution_level": 20
@@ -419,13 +419,13 @@
         "description": "With its huge and magnificent wings, it can keep aloft without ever having to land for rest.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "With its huge and magnificent wings, it can keep aloft without ever having to land for rest."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/FearowSprite.png",
-            "Poketimmer/api/templates/pokemon/FearowShinySprite.png"
+            "public/pokemon/normal/fearow.png",
+            "public/pokemon/shiny/fearow.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -438,13 +438,13 @@
         "description": "Moves silently and stealthily. Eats the eggs of birds, such as PIDGEY and SPEAROW, whole.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Moves silently and stealthily. Eats the eggs of birds, such as PIDGEY and SPEAROW, whole."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/EkansSprite.png",
-            "Poketimmer/api/templates/pokemon/EkansShinySprite.png"
+            "public/pokemon/normal/ekans.png",
+            "public/pokemon/shiny/ekans.png"
         ],
         "next_evolution": "0024",
         "evolution_level": 22
@@ -457,13 +457,13 @@
         "description": "It is rumored that the ferocious warning markings on its belly differ from area to area.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "It is rumored that the ferocious warning markings on its belly differ from area to area."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/ArbokSprite.png",
-            "Poketimmer/api/templates/pokemon/ArbokShinySprite.png"
+            "public/pokemon/normal/arbok.png",
+            "public/pokemon/shiny/arbok.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -476,13 +476,13 @@
         "description": "When several of these POKéMON gather, their electricity could build and cause lightning storms.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "When several of these POKéMON gather, their electricity could build and cause lightning storms."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PikachuSprite.png",
-            "Poketimmer/api/templates/pokemon/PikachuShinySprite.png"
+            "public/pokemon/normal/pikachu.png",
+            "public/pokemon/shiny/pikachu.png"
         ],
         "next_evolution": "0026",
         "evolution_level": null
@@ -495,13 +495,13 @@
         "description": "Its long tail serves as a ground to protect itself from its own high-voltage power.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Its long tail serves as a ground to protect itself from its own high-voltage power."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/RaichuSprite.png",
-            "Poketimmer/api/templates/pokemon/RaichuShinySprite.png"
+            "public/pokemon/normal/raichu.png",
+            "public/pokemon/shiny/raichu.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -514,13 +514,13 @@
         "description": "Burrows deep underground in arid locations far from water. It only emerges to hunt for food.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Burrows deep underground in arid locations far from water. It only emerges to hunt for food."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/SandshrewSprite.png",
-            "Poketimmer/api/templates/pokemon/SandshrewShinySprite.png"
+            "public/pokemon/normal/sandshrew.png",
+            "public/pokemon/shiny/sandshrew.png"
         ],
         "next_evolution": "0028",
         "evolution_level": 22
@@ -533,13 +533,13 @@
         "description": "Curls up into a spiny ball when threatened. It can roll while curled up to attack or escape.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Curls up into a spiny ball when threatened. It can roll while curled up to attack or escape."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/SandslashSprite.png",
-            "Poketimmer/api/templates/pokemon/SandslashShinySprite.png"
+            "public/pokemon/normal/sandslash.png",
+            "public/pokemon/shiny/sandslash.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -552,13 +552,13 @@
         "description": "Although small, its venomous barbs render this POKéMON dangerous. The female has smaller horns.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Although small, its venomous barbs render this POKéMON dangerous. The female has smaller horns."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/Nidoran-fSprite.png",
-            "Poketimmer/api/templates/pokemon/Nidoran-fShinySprite.png"
+            "public/pokemon/normal/nidoran-f.png",
+            "public/pokemon/shiny/nidoran-f.png"
         ],
         "next_evolution": "0030",
         "evolution_level": 16
@@ -571,13 +571,13 @@
         "description": "The female's horn develops slowly. Prefers physical attacks such as clawing and biting.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "The female's horn develops slowly. Prefers physical attacks such as clawing and biting."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/NidorinaSprite.png",
-            "Poketimmer/api/templates/pokemon/NidorinaShinySprite.png"
+            "public/pokemon/normal/nidorina.png",
+            "public/pokemon/shiny/nidorina.png"
         ],
         "next_evolution": "0031",
         "evolution_level": null
@@ -591,13 +591,13 @@
         "description": "Its hard scales provide strong protection. It uses its hefty bulk to execute powerful moves.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Its hard scales provide strong protection. It uses its hefty bulk to execute powerful moves."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/NidoqueenSprite.png",
-            "Poketimmer/api/templates/pokemon/NidoqueenShinySprite.png"
+            "public/pokemon/normal/nidoqueen.png",
+            "public/pokemon/shiny/nidoqueen.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -610,13 +610,13 @@
         "description": "Stiffens its ears to sense danger. The larger its horns, the more powerful its secreted venom.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Stiffens its ears to sense danger. The larger its horns, the more powerful its secreted venom."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/Nidoran-mSprite.png",
-            "Poketimmer/api/templates/pokemon/Nidoran-mShinySprite.png"
+            "public/pokemon/normal/nidoran-m.png",
+            "public/pokemon/shiny/nidoran-m.png"
         ],
         "next_evolution": "0033",
         "evolution_level": 16
@@ -629,13 +629,13 @@
         "description": "An aggressive POKéMON that is quick to attack. The horn on its head secretes a powerful venom.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "An aggressive POKéMON that is quick to attack. The horn on its head secretes a powerful venom."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/NidorinoSprite.png",
-            "Poketimmer/api/templates/pokemon/NidorinoShinySprite.png"
+            "public/pokemon/normal/nidorino.png",
+            "public/pokemon/shiny/nidorino.png"
         ],
         "next_evolution": "0034",
         "evolution_level": null
@@ -649,13 +649,13 @@
         "description": "It uses its powerful tail in battle to smash, constrict, then break the prey's bones.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "It uses its powerful tail in battle to smash, constrict, then break the prey's bones."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/NidokingSprite.png",
-            "Poketimmer/api/templates/pokemon/NidokingShinySprite.png"
+            "public/pokemon/normal/nidoking.png",
+            "public/pokemon/shiny/nidoking.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -668,13 +668,13 @@
         "description": "Its magical and cute appeal has many admirers. It is rare and found only in certain areas.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Its magical and cute appeal has many admirers. It is rare and found only in certain areas."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/ClefairySprite.png",
-            "Poketimmer/api/templates/pokemon/ClefairyShinySprite.png"
+            "public/pokemon/normal/clefairy.png",
+            "public/pokemon/shiny/clefairy.png"
         ],
         "next_evolution": "0036",
         "evolution_level": null
@@ -687,13 +687,13 @@
         "description": "A timid fairy POKéMON that is rarely seen. It will run and hide the moment it senses people.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "A timid fairy POKéMON that is rarely seen. It will run and hide the moment it senses people."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/ClefableSprite.png",
-            "Poketimmer/api/templates/pokemon/ClefableShinySprite.png"
+            "public/pokemon/normal/clefable.png",
+            "public/pokemon/shiny/clefable.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -706,13 +706,13 @@
         "description": "At the time of birth, it has just one tail. The tail splits from its tip as it grows older.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "At the time of birth, it has just one tail. The tail splits from its tip as it grows older."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/VulpixSprite.png",
-            "Poketimmer/api/templates/pokemon/VulpixShinySprite.png"
+            "public/pokemon/normal/vulpix.png",
+            "public/pokemon/shiny/vulpix.png"
         ],
         "next_evolution": "0038",
         "evolution_level": null
@@ -725,13 +725,13 @@
         "description": "Very smart and very vengeful. Grabbing one of its many tails could result in a 1000-year curse.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Very smart and very vengeful. Grabbing one of its many tails could result in a 1000-year curse."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/NinetalesSprite.png",
-            "Poketimmer/api/templates/pokemon/NinetalesShinySprite.png"
+            "public/pokemon/normal/ninetales.png",
+            "public/pokemon/shiny/ninetales.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -745,13 +745,13 @@
         "description": "When its huge eyes light up, it sings a mysteriously soothing melody that lulls its enemies to sleep.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "When its huge eyes light up, it sings a mysteriously soothing melody that lulls its enemies to sleep."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/JigglypuffSprite.png",
-            "Poketimmer/api/templates/pokemon/JigglypuffShinySprite.png"
+            "public/pokemon/normal/jigglypuff.png",
+            "public/pokemon/shiny/jigglypuff.png"
         ],
         "next_evolution": "0040",
         "evolution_level": null
@@ -765,13 +765,13 @@
         "description": "The body is soft and rubbery. When angered, it will suck in air and inflate itself to an enormous size.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "The body is soft and rubbery. When angered, it will suck in air and inflate itself to an enormous size."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/WigglytuffSprite.png",
-            "Poketimmer/api/templates/pokemon/WigglytuffShinySprite.png"
+            "public/pokemon/normal/wigglytuff.png",
+            "public/pokemon/shiny/wigglytuff.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -785,13 +785,13 @@
         "description": "Forms colonies in perpetually dark places. Uses ultrasonic waves to identify and approach targets.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Forms colonies in perpetually dark places. Uses ultrasonic waves to identify and approach targets."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/ZubatSprite.png",
-            "Poketimmer/api/templates/pokemon/ZubatShinySprite.png"
+            "public/pokemon/normal/zubat.png",
+            "public/pokemon/shiny/zubat.png"
         ],
         "next_evolution": "0042",
         "evolution_level": 22
@@ -805,13 +805,13 @@
         "description": "Once it strikes, it will not stop draining energy from the victim even if it gets too heavy to fly.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Once it strikes, it will not stop draining energy from the victim even if it gets too heavy to fly."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/GolbatSprite.png",
-            "Poketimmer/api/templates/pokemon/GolbatShinySprite.png"
+            "public/pokemon/normal/golbat.png",
+            "public/pokemon/shiny/golbat.png"
         ],
         "next_evolution": "0169",
         "evolution_level": null
@@ -825,13 +825,13 @@
         "description": "During the day, it keeps its face buried in the ground. At night, it wanders around sowing its seeds.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "During the day, it keeps its face buried in the ground. At night, it wanders around sowing its seeds."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/OddishSprite.png",
-            "Poketimmer/api/templates/pokemon/OddishShinySprite.png"
+            "public/pokemon/normal/oddish.png",
+            "public/pokemon/shiny/oddish.png"
         ],
         "next_evolution": "0044",
         "evolution_level": 21
@@ -845,13 +845,13 @@
         "description": "The fluid that oozes from its mouth isn't drool. It is a nectar that is used to attract prey.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "The fluid that oozes from its mouth isn't drool. It is a nectar that is used to attract prey."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/GloomSprite.png",
-            "Poketimmer/api/templates/pokemon/GloomShinySprite.png"
+            "public/pokemon/normal/gloom.png",
+            "public/pokemon/shiny/gloom.png"
         ],
         "next_evolution": "0045",
         "evolution_level": null
@@ -865,13 +865,13 @@
         "description": "It has the world’s largest petals. With every step, the petals shake out heavy clouds of toxic pollen.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "It has the world’s largest petals. With every step, the petals shake out heavy clouds of toxic pollen."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/VileplumeSprite.png",
-            "Poketimmer/api/templates/pokemon/VileplumeShinySprite.png"
+            "public/pokemon/normal/vileplume.png",
+            "public/pokemon/shiny/vileplume.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -885,13 +885,13 @@
         "description": "Burrows to suck tree roots. The mushrooms on its back grow by draw­ ing nutrients from the bug host.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Burrows to suck tree roots. The mushrooms on its back grow by draw­ ing nutrients from the bug host."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/ParasSprite.png",
-            "Poketimmer/api/templates/pokemon/ParasShinySprite.png"
+            "public/pokemon/normal/paras.png",
+            "public/pokemon/shiny/paras.png"
         ],
         "next_evolution": "0047",
         "evolution_level": 24
@@ -905,13 +905,13 @@
         "description": "A host-parasite pair in which the parasite mushroom has taken over the host bug. Prefers damp places.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "A host-parasite pair in which the parasite mushroom has taken over the host bug. Prefers damp places."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/ParasectSprite.png",
-            "Poketimmer/api/templates/pokemon/ParasectShinySprite.png"
+            "public/pokemon/normal/parasect.png",
+            "public/pokemon/shiny/parasect.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -925,13 +925,13 @@
         "description": "Lives in the shadows of tall trees where it eats insects. It is attracted by light at night.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Lives in the shadows of tall trees where it eats insects. It is attracted by light at night."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/VenonatSprite.png",
-            "Poketimmer/api/templates/pokemon/VenonatShinySprite.png"
+            "public/pokemon/normal/venonat.png",
+            "public/pokemon/shiny/venonat.png"
         ],
         "next_evolution": "0049",
         "evolution_level": 31
@@ -945,13 +945,13 @@
         "description": "The dustlike scales covering its wings are color-coded to indicate the kinds of poison it has.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "The dustlike scales covering its wings are color-coded to indicate the kinds of poison it has."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/VenomothSprite.png",
-            "Poketimmer/api/templates/pokemon/VenomothShinySprite.png"
+            "public/pokemon/normal/venomoth.png",
+            "public/pokemon/shiny/venomoth.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -964,13 +964,13 @@
         "description": "Lives about one yard underground where it feeds on plant roots. It sometimes appears above ground.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Lives about one yard underground where it feeds on plant roots. It sometimes appears above ground."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/DiglettSprite.png",
-            "Poketimmer/api/templates/pokemon/DiglettShinySprite.png"
+            "public/pokemon/normal/diglett.png",
+            "public/pokemon/shiny/diglett.png"
         ],
         "next_evolution": "0051",
         "evolution_level": 26
@@ -983,13 +983,13 @@
         "description": "A team of DIGLETT triplets. It triggers huge earthquakes by burrowing 60 miles underground.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "A team of DIGLETT triplets. It triggers huge earthquakes by burrowing 60 miles underground."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/DugtrioSprite.png",
-            "Poketimmer/api/templates/pokemon/DugtrioShinySprite.png"
+            "public/pokemon/normal/dugtrio.png",
+            "public/pokemon/shiny/dugtrio.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -1002,13 +1002,13 @@
         "description": "It washes its face regularly to keep the coin on its forehead spotless. It doesn’t get along with Galarian Meowth.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "It washes its face regularly to keep the coin on its forehead spotless. It doesn’t get along with Galarian Meowth."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/MeowthSprite.png",
-            "Poketimmer/api/templates/pokemon/MeowthShinySprite.png"
+            "public/pokemon/normal/meowth.png",
+            "public/pokemon/shiny/meowth.png"
         ],
         "next_evolution": "0053",
         "evolution_level": 28
@@ -1021,13 +1021,13 @@
         "description": "Although its fur has many admirers, it is tough to raise as a pet because of its fickle meanness.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Although its fur has many admirers, it is tough to raise as a pet because of its fickle meanness."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PersianSprite.png",
-            "Poketimmer/api/templates/pokemon/PersianShinySprite.png"
+            "public/pokemon/normal/persian.png",
+            "public/pokemon/shiny/persian.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -1040,13 +1040,13 @@
         "description": "While lulling its enemies with its vacant look, this wily POKéMON will use psychokinetic powers.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "While lulling its enemies with its vacant look, this wily POKéMON will use psychokinetic powers."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PsyduckSprite.png",
-            "Poketimmer/api/templates/pokemon/PsyduckShinySprite.png"
+            "public/pokemon/normal/psyduck.png",
+            "public/pokemon/shiny/psyduck.png"
         ],
         "next_evolution": "0055",
         "evolution_level": 33
@@ -1059,13 +1059,13 @@
         "description": "Often seen swim­ ming elegantly by lake shores. It is often mistaken for the Japanese monster, Kappa.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Often seen swim­ ming elegantly by lake shores. It is often mistaken for the Japanese monster, Kappa."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/GolduckSprite.png",
-            "Poketimmer/api/templates/pokemon/GolduckShinySprite.png"
+            "public/pokemon/normal/golduck.png",
+            "public/pokemon/shiny/golduck.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -1078,13 +1078,13 @@
         "description": "Extremely quick to anger. It could be docile one moment then thrashing away the next instant.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Extremely quick to anger. It could be docile one moment then thrashing away the next instant."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/MankeySprite.png",
-            "Poketimmer/api/templates/pokemon/MankeyShinySprite.png"
+            "public/pokemon/normal/mankey.png",
+            "public/pokemon/shiny/mankey.png"
         ],
         "next_evolution": "0057",
         "evolution_level": 28
@@ -1097,13 +1097,13 @@
         "description": "Always furious and tenacious to boot. It will not abandon chasing its quarry until it is caught.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Always furious and tenacious to boot. It will not abandon chasing its quarry until it is caught."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PrimeapeSprite.png",
-            "Poketimmer/api/templates/pokemon/PrimeapeShinySprite.png"
+            "public/pokemon/normal/primeape.png",
+            "public/pokemon/shiny/primeape.png"
         ],
         "next_evolution": "0979",
         "evolution_level": null
@@ -1116,13 +1116,13 @@
         "description": "Very protective of its territory. It will bark and bite to repel intruders from its space.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Very protective of its territory. It will bark and bite to repel intruders from its space."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/GrowlitheSprite.png",
-            "Poketimmer/api/templates/pokemon/GrowlitheShinySprite.png"
+            "public/pokemon/normal/growlithe.png",
+            "public/pokemon/shiny/growlithe.png"
         ],
         "next_evolution": "0059",
         "evolution_level": null
@@ -1135,13 +1135,13 @@
         "description": "A POKéMON that has been admired since the past for its beauty. It runs agilely as if on wings.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "A POKéMON that has been admired since the past for its beauty. It runs agilely as if on wings."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/ArcanineSprite.png",
-            "Poketimmer/api/templates/pokemon/ArcanineShinySprite.png"
+            "public/pokemon/normal/arcanine.png",
+            "public/pokemon/shiny/arcanine.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -1154,13 +1154,13 @@
         "description": "Its newly grown legs prevent it from running. It appears to prefer swimming than trying to stand.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Its newly grown legs prevent it from running. It appears to prefer swimming than trying to stand."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PoliwagSprite.png",
-            "Poketimmer/api/templates/pokemon/PoliwagShinySprite.png"
+            "public/pokemon/normal/poliwag.png",
+            "public/pokemon/shiny/poliwag.png"
         ],
         "next_evolution": "0061",
         "evolution_level": 25
@@ -1173,13 +1173,13 @@
         "description": "Capable of living in or out of water. When out of water, it sweats to keep its body slimy.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Capable of living in or out of water. When out of water, it sweats to keep its body slimy."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PoliwhirlSprite.png",
-            "Poketimmer/api/templates/pokemon/PoliwhirlShinySprite.png"
+            "public/pokemon/normal/poliwhirl.png",
+            "public/pokemon/shiny/poliwhirl.png"
         ],
         "next_evolution": "0062",
         "evolution_level": null
@@ -1193,13 +1193,13 @@
         "description": "An adept swimmer at both the front crawl and breast stroke. Easily overtakes the best human swimmers.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "An adept swimmer at both the front crawl and breast stroke. Easily overtakes the best human swimmers."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/PoliwrathSprite.png",
-            "Poketimmer/api/templates/pokemon/PoliwrathShinySprite.png"
+            "public/pokemon/normal/poliwrath.png",
+            "public/pokemon/shiny/poliwrath.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -1212,13 +1212,13 @@
         "description": "Using its ability to read minds, it will identify impending danger and TELEPORT to safety.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Using its ability to read minds, it will identify impending danger and TELEPORT to safety."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/AbraSprite.png",
-            "Poketimmer/api/templates/pokemon/AbraShinySprite.png"
+            "public/pokemon/normal/abra.png",
+            "public/pokemon/shiny/abra.png"
         ],
         "next_evolution": "0064",
         "evolution_level": 16
@@ -1231,13 +1231,13 @@
         "description": "It emits special alpha waves from its body that induce headaches just by being close by.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "It emits special alpha waves from its body that induce headaches just by being close by."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/KadabraSprite.png",
-            "Poketimmer/api/templates/pokemon/KadabraShinySprite.png"
+            "public/pokemon/normal/kadabra.png",
+            "public/pokemon/shiny/kadabra.png"
         ],
         "next_evolution": "0065",
         "evolution_level": null
@@ -1250,13 +1250,13 @@
         "description": "Its brain can out­ perform a super­ computer. Its intelligence quotient is said to be 5,000.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Its brain can out­ perform a super­ computer. Its intelligence quotient is said to be 5,000."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/AlakazamSprite.png",
-            "Poketimmer/api/templates/pokemon/AlakazamShinySprite.png"
+            "public/pokemon/normal/alakazam.png",
+            "public/pokemon/shiny/alakazam.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -1269,13 +1269,13 @@
         "description": "Loves to build its muscles. It trains in all styles of martial arts to become even stronger.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Loves to build its muscles. It trains in all styles of martial arts to become even stronger."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/MachopSprite.png",
-            "Poketimmer/api/templates/pokemon/MachopShinySprite.png"
+            "public/pokemon/normal/machop.png",
+            "public/pokemon/shiny/machop.png"
         ],
         "next_evolution": "0067",
         "evolution_level": 28
@@ -1288,13 +1288,13 @@
         "description": "Its muscular body is so powerful, it must wear a power save belt to be able to regulate its motions.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Its muscular body is so powerful, it must wear a power save belt to be able to regulate its motions."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/MachokeSprite.png",
-            "Poketimmer/api/templates/pokemon/MachokeShinySprite.png"
+            "public/pokemon/normal/machoke.png",
+            "public/pokemon/shiny/machoke.png"
         ],
         "next_evolution": "0068",
         "evolution_level": null
@@ -1307,13 +1307,13 @@
         "description": "Using its heavy muscles, it throws powerful punches that can send the victim clear over the horizon.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "Using its heavy muscles, it throws powerful punches that can send the victim clear over the horizon."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/MachampSprite.png",
-            "Poketimmer/api/templates/pokemon/MachampShinySprite.png"
+            "public/pokemon/normal/machamp.png",
+            "public/pokemon/shiny/machamp.png"
         ],
         "next_evolution": null,
         "evolution_level": null
@@ -1327,13 +1327,13 @@
         "description": "A carnivorous POKéMON that traps and eats bugs. It uses its root feet to soak up needed moisture.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "A carnivorous POKéMON that traps and eats bugs. It uses its root feet to soak up needed moisture."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/BellsproutSprite.png",
-            "Poketimmer/api/templates/pokemon/BellsproutShinySprite.png"
+            "public/pokemon/normal/bellsprout.png",
+            "public/pokemon/shiny/bellsprout.png"
         ],
         "next_evolution": "0070",
         "evolution_level": 21
@@ -1347,13 +1347,13 @@
         "description": "It spits out POISONPOWDER to immobilize the enemy and then finishes it with a spray of ACID.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
+                "game": "Base Game",
                 "entry": "It spits out POISONPOWDER to immobilize the enemy and then finishes it with a spray of ACID."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/WeepinbellSprite.png",
-            "Poketimmer/api/templates/pokemon/WeepinbellShinySprite.png"
+            "public/pokemon/normal/weepinbell.png",
+            "public/pokemon/shiny/weepinbell.png"
         ],
         "next_evolution": "0071",
         "evolution_level": null
@@ -1364,56 +1364,1573 @@
             "Grass",
             "Poison"
         ],
-        "description": "Said to live in huge colonies deep within jungles. It is said to prey on travelers who become lost in mountains.",
+        "description": "Said to live in huge colonies deep in jungles, although no one has ever returned from there.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
-                "entry": "Said to live in huge colonies deep within jungles. It is said to prey on travelers who become lost in mountains."
+                "game": "Base Game",
+                "entry": "Said to live in huge colonies deep in jungles, although no one has ever returned from there."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/VictreebellSprite.png",
-            "Poketimmer/api/templates/pokemon/VictreebellShinySprite.png"
+            "public/pokemon/normal/victreebel.png",
+            "public/pokemon/shiny/victreebel.png"
         ],
         "next_evolution": null,
         "evolution_level": null
     },
-    "0169": {
-        "name": "Crobat",
+    "0072": {
+        "name": "Tentacool",
         "type": [
-            "Poison",
+            "Water",
+            "Poison"
+        ],
+        "description": "Drifts in shallow seas. Anglers who hook them by accident are often punished by its stinging acid.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Drifts in shallow seas. Anglers who hook them by accident are often punished by its stinging acid."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/tentacool.png",
+            "public/pokemon/shiny/tentacool.png"
+        ],
+        "next_evolution": "0073",
+        "evolution_level": 30
+    },
+    "0073": {
+        "name": "Tentacruel",
+        "type": [
+            "Water",
+            "Poison"
+        ],
+        "description": "The tentacles are normally kept short. On hunts, they are extended to ensnare and immobilize prey.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "The tentacles are normally kept short. On hunts, they are extended to ensnare and immobilize prey."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/tentacruel.png",
+            "public/pokemon/shiny/tentacruel.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0074": {
+        "name": "Geodude",
+        "type": [
+            "Rock",
+            "Ground"
+        ],
+        "description": "Found in fields and mountains. Mistaking them for boulders, people often step or trip on them.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Found in fields and mountains. Mistaking them for boulders, people often step or trip on them."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/geodude.png",
+            "public/pokemon/shiny/geodude.png"
+        ],
+        "next_evolution": "0075",
+        "evolution_level": 25
+    },
+    "0075": {
+        "name": "Graveler",
+        "type": [
+            "Rock",
+            "Ground"
+        ],
+        "description": "Rolls down slopes to move. It rolls over any obstacle without slowing or changing its direction.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Rolls down slopes to move. It rolls over any obstacle without slowing or changing its direction."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/graveler.png",
+            "public/pokemon/shiny/graveler.png"
+        ],
+        "next_evolution": "0076",
+        "evolution_level": null
+    },
+    "0076": {
+        "name": "Golem",
+        "type": [
+            "Rock",
+            "Ground"
+        ],
+        "description": "Its boulder-like body is extremely hard. It can easily withstand dynamite blasts without damage.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its boulder-like body is extremely hard. It can easily withstand dynamite blasts without damage."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/golem.png",
+            "public/pokemon/shiny/golem.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0077": {
+        "name": "Ponyta",
+        "type": [
+            "Fire"
+        ],
+        "description": "Its hooves are 10 times harder than diamonds. It can trample anything completely flat in little time.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its hooves are 10 times harder than diamonds. It can trample anything completely flat in little time."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/ponyta.png",
+            "public/pokemon/shiny/ponyta.png"
+        ],
+        "next_evolution": "0078",
+        "evolution_level": 40
+    },
+    "0078": {
+        "name": "Rapidash",
+        "type": [
+            "Fire"
+        ],
+        "description": "Very competitive, this POKéMON will chase anything that moves fast in the hopes of racing it.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Very competitive, this POKéMON will chase anything that moves fast in the hopes of racing it."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/rapidash.png",
+            "public/pokemon/shiny/rapidash.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0079": {
+        "name": "Slowpoke",
+        "type": [
+            "Water",
+            "Psychic"
+        ],
+        "description": "Incredibly slow and dopey. It takes 5 seconds for it to feel pain when under attack.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Incredibly slow and dopey. It takes 5 seconds for it to feel pain when under attack."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/slowpoke.png",
+            "public/pokemon/shiny/slowpoke.png"
+        ],
+        "next_evolution": "0080",
+        "evolution_level": 37
+    },
+    "0080": {
+        "name": "Slowbro",
+        "type": [
+            "Water",
+            "Psychic"
+        ],
+        "description": "The SHELLDER that is latched onto SLOWPOKE's tail is said to feed on the host's left over scraps.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "The SHELLDER that is latched onto SLOWPOKE's tail is said to feed on the host's left over scraps."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/slowbro.png",
+            "public/pokemon/shiny/slowbro.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0081": {
+        "name": "Magnemite",
+        "type": [
+            "Electric",
+            "Steel"
+        ],
+        "description": "Uses anti-gravity to stay suspended. Appears without warning and uses THUNDER WAVE and similar moves.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Uses anti-gravity to stay suspended. Appears without warning and uses THUNDER WAVE and similar moves."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/magnemite.png",
+            "public/pokemon/shiny/magnemite.png"
+        ],
+        "next_evolution": "0082",
+        "evolution_level": 30
+    },
+    "0082": {
+        "name": "Magneton",
+        "type": [
+            "Electric",
+            "Steel"
+        ],
+        "description": "Formed by several MAGNEMITEs linked together. They frequently appear when sunspots flare up.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Formed by several MAGNEMITEs linked together. They frequently appear when sunspots flare up."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/magneton.png",
+            "public/pokemon/shiny/magneton.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0083": {
+        "name": "Farfetchd",
+        "type": [
+            "Normal",
             "Flying"
         ],
-        "description": "A more agile and powerful move enables it to hypnotize enemies into immobility. It rarely appears before people.",
+        "description": "The sprig of green onions it holds is its weapon. It is used much like a metal sword.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
-                "entry": "A more agile and powerful move enables it to hypnotize enemies into immobility. It rarely appears before people."
+                "game": "Base Game",
+                "entry": "The sprig of green onions it holds is its weapon. It is used much like a metal sword."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/CrobatSprite.png",
-            "Poketimmer/api/templates/pokemon/CrobatShinySprite.png"
+            "public/pokemon/normal/farfetchd.png",
+            "public/pokemon/shiny/farfetchd.png"
         ],
         "next_evolution": null,
         "evolution_level": null
     },
-    "0979": {
-        "name": "Annihilape",
+    "0084": {
+        "name": "Doduo",
         "type": [
-            "Fighting",
-            "Ghost"
+            "Normal",
+            "Flying"
         ],
-        "description": "Overcome with rage, it goes on wild rampages that neither its allies nor its foes can stop. It may become uncontrollable.",
+        "description": "A bird that makes up for its poor flying with its fast foot speed. Leaves giant footprints.",
         "Pokédex entries": [
             {
-                "game": "Game(Actualiza el script para asignar el juego correcto)",
-                "entry": "Overcome with rage, it goes on wild rampages that neither its allies nor its foes can stop. It may become uncontrollable."
+                "game": "Base Game",
+                "entry": "A bird that makes up for its poor flying with its fast foot speed. Leaves giant footprints."
             }
         ],
         "sprites": [
-            "Poketimmer/api/templates/pokemon/AnnihilapeSprite.png",
-            "Poketimmer/api/templates/pokemon/AnnihilapeShinySprite.png"
+            "public/pokemon/normal/doduo.png",
+            "public/pokemon/shiny/doduo.png"
+        ],
+        "next_evolution": "0085",
+        "evolution_level": 31
+    },
+    "0085": {
+        "name": "Dodrio",
+        "type": [
+            "Normal",
+            "Flying"
+        ],
+        "description": "Uses its three brains to execute complex plans. While two heads sleep, one head stays awake.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Uses its three brains to execute complex plans. While two heads sleep, one head stays awake."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/dodrio.png",
+            "public/pokemon/shiny/dodrio.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0086": {
+        "name": "Seel",
+        "type": [
+            "Water"
+        ],
+        "description": "The protruding horn on its head is very hard. It is used for bashing through thick ice.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "The protruding horn on its head is very hard. It is used for bashing through thick ice."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/seel.png",
+            "public/pokemon/shiny/seel.png"
+        ],
+        "next_evolution": "0087",
+        "evolution_level": 34
+    },
+    "0087": {
+        "name": "Dewgong",
+        "type": [
+            "Water",
+            "Ice"
+        ],
+        "description": "Stores thermal energy in its body. Swims at a steady 8 knots even in intensely cold waters.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Stores thermal energy in its body. Swims at a steady 8 knots even in intensely cold waters."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/dewgong.png",
+            "public/pokemon/shiny/dewgong.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0088": {
+        "name": "Grimer",
+        "type": [
+            "Poison"
+        ],
+        "description": "Appears in filthy areas. Thrives by sucking up polluted sludge that is pumped out of factories.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Appears in filthy areas. Thrives by sucking up polluted sludge that is pumped out of factories."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/grimer.png",
+            "public/pokemon/shiny/grimer.png"
+        ],
+        "next_evolution": "0089",
+        "evolution_level": 38
+    },
+    "0089": {
+        "name": "Muk",
+        "type": [
+            "Poison"
+        ],
+        "description": "Thickly covered with a filthy, vile sludge. It is so toxic, even its footprints contain poison.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Thickly covered with a filthy, vile sludge. It is so toxic, even its footprints contain poison."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/muk.png",
+            "public/pokemon/shiny/muk.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0090": {
+        "name": "Shellder",
+        "type": [
+            "Water"
+        ],
+        "description": "Its hard shell repels any kind of attack. It is vulnerable only when its shell is open.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its hard shell repels any kind of attack. It is vulnerable only when its shell is open."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/shellder.png",
+            "public/pokemon/shiny/shellder.png"
+        ],
+        "next_evolution": "0091",
+        "evolution_level": null
+    },
+    "0091": {
+        "name": "Cloyster",
+        "type": [
+            "Water",
+            "Ice"
+        ],
+        "description": "When attacked, it launches its horns in quick volleys. Its innards have never been seen.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "When attacked, it launches its horns in quick volleys. Its innards have never been seen."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/cloyster.png",
+            "public/pokemon/shiny/cloyster.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0092": {
+        "name": "Gastly",
+        "type": [
+            "Ghost",
+            "Poison"
+        ],
+        "description": "Almost invisible, this gaseous POKéMON cloaks the target and puts it to sleep without notice.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Almost invisible, this gaseous POKéMON cloaks the target and puts it to sleep without notice."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/gastly.png",
+            "public/pokemon/shiny/gastly.png"
+        ],
+        "next_evolution": "0093",
+        "evolution_level": 25
+    },
+    "0093": {
+        "name": "Haunter",
+        "type": [
+            "Ghost",
+            "Poison"
+        ],
+        "description": "Because of its ability to slip through block walls, it is said to be from an­ other dimension.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Because of its ability to slip through block walls, it is said to be from an­ other dimension."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/haunter.png",
+            "public/pokemon/shiny/haunter.png"
+        ],
+        "next_evolution": "0094",
+        "evolution_level": null
+    },
+    "0094": {
+        "name": "Gengar",
+        "type": [
+            "Ghost",
+            "Poison"
+        ],
+        "description": "Under a full moon, this POKéMON likes to mimic the shadows of people and laugh at their fright.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Under a full moon, this POKéMON likes to mimic the shadows of people and laugh at their fright."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/gengar.png",
+            "public/pokemon/shiny/gengar.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0095": {
+        "name": "Onix",
+        "type": [
+            "Rock",
+            "Ground"
+        ],
+        "description": "As it grows, the stone portions of its body harden to become similar to a diamond, but colored black.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "As it grows, the stone portions of its body harden to become similar to a diamond, but colored black."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/onix.png",
+            "public/pokemon/shiny/onix.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0096": {
+        "name": "Drowzee",
+        "type": [
+            "Psychic"
+        ],
+        "description": "Puts enemies to sleep then eats their dreams. Occasionally gets sick from eating bad dreams.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Puts enemies to sleep then eats their dreams. Occasionally gets sick from eating bad dreams."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/drowzee.png",
+            "public/pokemon/shiny/drowzee.png"
+        ],
+        "next_evolution": "0097",
+        "evolution_level": 26
+    },
+    "0097": {
+        "name": "Hypno",
+        "type": [
+            "Psychic"
+        ],
+        "description": "When it locks eyes with an enemy, it will use a mix of PSI moves such as HYPNOSIS and CONFUSION.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "When it locks eyes with an enemy, it will use a mix of PSI moves such as HYPNOSIS and CONFUSION."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/hypno.png",
+            "public/pokemon/shiny/hypno.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0098": {
+        "name": "Krabby",
+        "type": [
+            "Water"
+        ],
+        "description": "Its pincers are not only powerful weapons, they are used for balance when walking sideways.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its pincers are not only powerful weapons, they are used for balance when walking sideways."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/krabby.png",
+            "public/pokemon/shiny/krabby.png"
+        ],
+        "next_evolution": "0099",
+        "evolution_level": 28
+    },
+    "0099": {
+        "name": "Kingler",
+        "type": [
+            "Water"
+        ],
+        "description": "The large pincer has 10000 hp of crushing power. However, its huge size makes it unwieldy to use.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "The large pincer has 10000 hp of crushing power. However, its huge size makes it unwieldy to use."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/kingler.png",
+            "public/pokemon/shiny/kingler.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0100": {
+        "name": "Voltorb",
+        "type": [
+            "Electric"
+        ],
+        "description": "Usually found in power plants. Easily mistaken for a POKé BALL, they have zapped many people.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Usually found in power plants. Easily mistaken for a POKé BALL, they have zapped many people."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/voltorb.png",
+            "public/pokemon/shiny/voltorb.png"
+        ],
+        "next_evolution": "0101",
+        "evolution_level": 30
+    },
+    "0101": {
+        "name": "Electrode",
+        "type": [
+            "Electric"
+        ],
+        "description": "It stores electric energy under very high pressure. It often explodes with little or no provocation.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "It stores electric energy under very high pressure. It often explodes with little or no provocation."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/electrode.png",
+            "public/pokemon/shiny/electrode.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0102": {
+        "name": "Exeggcute",
+        "type": [
+            "Grass",
+            "Psychic"
+        ],
+        "description": "Often mistaken for eggs. When disturbed, they quickly gather and attack in swarms.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Often mistaken for eggs. When disturbed, they quickly gather and attack in swarms."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/exeggcute.png",
+            "public/pokemon/shiny/exeggcute.png"
+        ],
+        "next_evolution": "0103",
+        "evolution_level": null
+    },
+    "0103": {
+        "name": "Exeggutor",
+        "type": [
+            "Grass",
+            "Psychic"
+        ],
+        "description": "Legend has it that on rare occasions, one of its heads will drop off and continue on as an EXEGGCUTE.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Legend has it that on rare occasions, one of its heads will drop off and continue on as an EXEGGCUTE."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/exeggutor.png",
+            "public/pokemon/shiny/exeggutor.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0104": {
+        "name": "Cubone",
+        "type": [
+            "Ground"
+        ],
+        "description": "Because it never removes its skull helmet, no one has ever seen this POKéMON's real face.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Because it never removes its skull helmet, no one has ever seen this POKéMON's real face."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/cubone.png",
+            "public/pokemon/shiny/cubone.png"
+        ],
+        "next_evolution": "0105",
+        "evolution_level": 28
+    },
+    "0105": {
+        "name": "Marowak",
+        "type": [
+            "Ground"
+        ],
+        "description": "The bone it holds is its key weapon. It throws the bone skillfully like a boomerang to KO targets.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "The bone it holds is its key weapon. It throws the bone skillfully like a boomerang to KO targets."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/marowak.png",
+            "public/pokemon/shiny/marowak.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0106": {
+        "name": "Hitmonlee",
+        "type": [
+            "Fighting"
+        ],
+        "description": "When in a hurry, its legs lengthen progressively. It runs smoothly with extra long, loping strides.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "When in a hurry, its legs lengthen progressively. It runs smoothly with extra long, loping strides."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/hitmonlee.png",
+            "public/pokemon/shiny/hitmonlee.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0107": {
+        "name": "Hitmonchan",
+        "type": [
+            "Fighting"
+        ],
+        "description": "While apparently doing nothing, it fires punches in lightning fast volleys that are impossible to see.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "While apparently doing nothing, it fires punches in lightning fast volleys that are impossible to see."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/hitmonchan.png",
+            "public/pokemon/shiny/hitmonchan.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0108": {
+        "name": "Lickitung",
+        "type": [
+            "Normal"
+        ],
+        "description": "Its tongue can be extended like a chameleon's. It leaves a tingling sensation when it licks enemies.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its tongue can be extended like a chameleon's. It leaves a tingling sensation when it licks enemies."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/lickitung.png",
+            "public/pokemon/shiny/lickitung.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0109": {
+        "name": "Koffing",
+        "type": [
+            "Poison"
+        ],
+        "description": "Because it stores several kinds of toxic gases in its body, it is prone to exploding without warning.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Because it stores several kinds of toxic gases in its body, it is prone to exploding without warning."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/koffing.png",
+            "public/pokemon/shiny/koffing.png"
+        ],
+        "next_evolution": "0110",
+        "evolution_level": 35
+    },
+    "0110": {
+        "name": "Weezing",
+        "type": [
+            "Poison"
+        ],
+        "description": "Where two kinds of poison gases meet, 2 KOFFINGs can fuse into a WEEZING over many years.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Where two kinds of poison gases meet, 2 KOFFINGs can fuse into a WEEZING over many years."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/weezing.png",
+            "public/pokemon/shiny/weezing.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0111": {
+        "name": "Rhyhorn",
+        "type": [
+            "Ground",
+            "Rock"
+        ],
+        "description": "A POKéMON with a one-track mind. Once it charges,  it won't stop running until it falls asleep.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A POKéMON with a one-track mind. Once it charges,  it won't stop running until it falls asleep."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/rhyhorn.png",
+            "public/pokemon/shiny/rhyhorn.png"
+        ],
+        "next_evolution": "0112",
+        "evolution_level": 42
+    },
+    "0112": {
+        "name": "Rhydon",
+        "type": [
+            "Ground",
+            "Rock"
+        ],
+        "description": "Protected by an armor-like hide, it is capable of living in molten lava of 3,600 degrees.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Protected by an armor-like hide, it is capable of living in molten lava of 3,600 degrees."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/rhydon.png",
+            "public/pokemon/shiny/rhydon.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0113": {
+        "name": "Chansey",
+        "type": [
+            "Normal"
+        ],
+        "description": "A rare and elusive POKéMON that is said to bring happiness to those who manage to get it.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A rare and elusive POKéMON that is said to bring happiness to those who manage to get it."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/chansey.png",
+            "public/pokemon/shiny/chansey.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0114": {
+        "name": "Tangela",
+        "type": [
+            "Grass"
+        ],
+        "description": "The whole body is swathed with wide vines that are similar to sea­ weed. Its vines shake as it walks.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "The whole body is swathed with wide vines that are similar to sea­ weed. Its vines shake as it walks."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/tangela.png",
+            "public/pokemon/shiny/tangela.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0115": {
+        "name": "Kangaskhan",
+        "type": [
+            "Normal"
+        ],
+        "description": "The infant rarely ventures out of its mother's protective pouch until it is 3 years old.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "The infant rarely ventures out of its mother's protective pouch until it is 3 years old."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/kangaskhan.png",
+            "public/pokemon/shiny/kangaskhan.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0116": {
+        "name": "Horsea",
+        "type": [
+            "Water"
+        ],
+        "description": "Known to shoot down flying bugs with precision blasts of ink from the surface of the water.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Known to shoot down flying bugs with precision blasts of ink from the surface of the water."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/horsea.png",
+            "public/pokemon/shiny/horsea.png"
+        ],
+        "next_evolution": "0117",
+        "evolution_level": 32
+    },
+    "0117": {
+        "name": "Seadra",
+        "type": [
+            "Water"
+        ],
+        "description": "Capable of swim­ ming backwards by rapidly flapping its wing-like pectoral fins and stout tail.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Capable of swim­ ming backwards by rapidly flapping its wing-like pectoral fins and stout tail."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/seadra.png",
+            "public/pokemon/shiny/seadra.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0118": {
+        "name": "Goldeen",
+        "type": [
+            "Water"
+        ],
+        "description": "Its tail fin billows like an elegant ballroom dress, giving it the nickname of the Water Queen.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its tail fin billows like an elegant ballroom dress, giving it the nickname of the Water Queen."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/goldeen.png",
+            "public/pokemon/shiny/goldeen.png"
+        ],
+        "next_evolution": "0119",
+        "evolution_level": 33
+    },
+    "0119": {
+        "name": "Seaking",
+        "type": [
+            "Water"
+        ],
+        "description": "In the autumn spawning season, they can be seen swimming powerfully up rivers and creeks.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "In the autumn spawning season, they can be seen swimming powerfully up rivers and creeks."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/seaking.png",
+            "public/pokemon/shiny/seaking.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0120": {
+        "name": "Staryu",
+        "type": [
+            "Water"
+        ],
+        "description": "If its body is torn, it can grow back if the red core remains. The core flashes at midnight.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "If its body is torn, it can grow back if the red core remains. The core flashes at midnight."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/staryu.png",
+            "public/pokemon/shiny/staryu.png"
+        ],
+        "next_evolution": "0121",
+        "evolution_level": null
+    },
+    "0121": {
+        "name": "Starmie",
+        "type": [
+            "Water",
+            "Psychic"
+        ],
+        "description": "Its central core glows with the seven colors of the rainbow. Some people value the core as a gem.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its central core glows with the seven colors of the rainbow. Some people value the core as a gem."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/starmie.png",
+            "public/pokemon/shiny/starmie.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0122": {
+        "name": "Mr-mime",
+        "type": [
+            "Psychic",
+            "Fairy"
+        ],
+        "description": "If interrupted while it is miming, it will slap around the offender with its broad hands.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "If interrupted while it is miming, it will slap around the offender with its broad hands."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/mr-mime.png",
+            "public/pokemon/shiny/mr-mime.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": 42
+    },
+    "0123": {
+        "name": "Scyther",
+        "type": [
+            "Bug",
+            "Flying"
+        ],
+        "description": "With ninja-like agility and speed, it can create the illusion that there is more than one.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "With ninja-like agility and speed, it can create the illusion that there is more than one."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/scyther.png",
+            "public/pokemon/shiny/scyther.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0124": {
+        "name": "Jynx",
+        "type": [
+            "Ice",
+            "Psychic"
+        ],
+        "description": "It seductively wiggles its hips as it walks. It can cause people to dance in unison with it.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "It seductively wiggles its hips as it walks. It can cause people to dance in unison with it."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/jynx.png",
+            "public/pokemon/shiny/jynx.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0125": {
+        "name": "Electabuzz",
+        "type": [
+            "Electric"
+        ],
+        "description": "Normally found near power plants, they can wander away and cause major blackouts in cities.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Normally found near power plants, they can wander away and cause major blackouts in cities."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/electabuzz.png",
+            "public/pokemon/shiny/electabuzz.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0126": {
+        "name": "Magmar",
+        "type": [
+            "Fire"
+        ],
+        "description": "Its body always burns with an orange glow that enables it to hide perfectly among flames.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its body always burns with an orange glow that enables it to hide perfectly among flames."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/magmar.png",
+            "public/pokemon/shiny/magmar.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0127": {
+        "name": "Pinsir",
+        "type": [
+            "Bug"
+        ],
+        "description": "If it fails to crush the victim in its pincers, it will swing it around and toss it hard.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "If it fails to crush the victim in its pincers, it will swing it around and toss it hard."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/pinsir.png",
+            "public/pokemon/shiny/pinsir.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0128": {
+        "name": "Tauros",
+        "type": [
+            "Normal"
+        ],
+        "description": "When it targets an enemy, it charges furiously while whipping its body with its long tails.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "When it targets an enemy, it charges furiously while whipping its body with its long tails."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/tauros.png",
+            "public/pokemon/shiny/tauros.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0129": {
+        "name": "Magikarp",
+        "type": [
+            "Water"
+        ],
+        "description": "In the distant past, it was somewhat stronger than the horribly weak descendants that exist today.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "In the distant past, it was somewhat stronger than the horribly weak descendants that exist today."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/magikarp.png",
+            "public/pokemon/shiny/magikarp.png"
+        ],
+        "next_evolution": "0130",
+        "evolution_level": 20
+    },
+    "0130": {
+        "name": "Gyarados",
+        "type": [
+            "Water",
+            "Flying"
+        ],
+        "description": "Once it begins to rampage, a GYARADOS will burn everything down, even in a harsh storm.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Once it begins to rampage, a GYARADOS will burn everything down, even in a harsh storm."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/gyarados.png",
+            "public/pokemon/shiny/gyarados.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0131": {
+        "name": "Lapras",
+        "type": [
+            "Water",
+            "Ice"
+        ],
+        "description": "A POKéMON that has been over­ hunted almost to extinction. It can ferry people across the water.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A POKéMON that has been over­ hunted almost to extinction. It can ferry people across the water."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/lapras.png",
+            "public/pokemon/shiny/lapras.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0132": {
+        "name": "Ditto",
+        "type": [
+            "Normal"
+        ],
+        "description": "Capable of copying an enemy's genetic code to instantly transform itself into a duplicate of the enemy.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Capable of copying an enemy's genetic code to instantly transform itself into a duplicate of the enemy."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/ditto.png",
+            "public/pokemon/shiny/ditto.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0133": {
+        "name": "Eevee",
+        "type": [
+            "Normal"
+        ],
+        "description": "Its genetic code is irregular. It may mutate if it is exposed to radiation from element STONEs.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its genetic code is irregular. It may mutate if it is exposed to radiation from element STONEs."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/eevee.png",
+            "public/pokemon/shiny/eevee.png"
+        ],
+        "next_evolution": "0134",
+        "evolution_level": null
+    },
+    "0134": {
+        "name": "Vaporeon",
+        "type": [
+            "Water"
+        ],
+        "description": "Lives close to water. Its long tail is ridged with a fin which is often mistaken for a mermaid's.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Lives close to water. Its long tail is ridged with a fin which is often mistaken for a mermaid's."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/vaporeon.png",
+            "public/pokemon/shiny/vaporeon.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0135": {
+        "name": "Jolteon",
+        "type": [
+            "Electric"
+        ],
+        "description": "It accumulates negative ions in the atmosphere to blast out 10000- volt lightning bolts.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "It accumulates negative ions in the atmosphere to blast out 10000- volt lightning bolts."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/jolteon.png",
+            "public/pokemon/shiny/jolteon.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0136": {
+        "name": "Flareon",
+        "type": [
+            "Fire"
+        ],
+        "description": "When storing thermal energy in its body, its temperature could soar to over 1600 degrees.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "When storing thermal energy in its body, its temperature could soar to over 1600 degrees."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/flareon.png",
+            "public/pokemon/shiny/flareon.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0137": {
+        "name": "Porygon",
+        "type": [
+            "Normal"
+        ],
+        "description": "A POKéMON that consists entirely of programming code. Capable of moving freely in cyberspace.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A POKéMON that consists entirely of programming code. Capable of moving freely in cyberspace."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/porygon.png",
+            "public/pokemon/shiny/porygon.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0138": {
+        "name": "Omanyte",
+        "type": [
+            "Rock",
+            "Water"
+        ],
+        "description": "Although long extinct, in rare cases, it can be genetically resurrected from fossils.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Although long extinct, in rare cases, it can be genetically resurrected from fossils."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/omanyte.png",
+            "public/pokemon/shiny/omanyte.png"
+        ],
+        "next_evolution": "0139",
+        "evolution_level": 40
+    },
+    "0139": {
+        "name": "Omastar",
+        "type": [
+            "Rock",
+            "Water"
+        ],
+        "description": "A prehistoric POKéMON that died out when its heavy shell made it impossible to catch prey.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A prehistoric POKéMON that died out when its heavy shell made it impossible to catch prey."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/omastar.png",
+            "public/pokemon/shiny/omastar.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0140": {
+        "name": "Kabuto",
+        "type": [
+            "Rock",
+            "Water"
+        ],
+        "description": "A POKéMON that was resurrected from a fossil found in what was once the ocean floor eons ago.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A POKéMON that was resurrected from a fossil found in what was once the ocean floor eons ago."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/kabuto.png",
+            "public/pokemon/shiny/kabuto.png"
+        ],
+        "next_evolution": "0141",
+        "evolution_level": 40
+    },
+    "0141": {
+        "name": "Kabutops",
+        "type": [
+            "Rock",
+            "Water"
+        ],
+        "description": "Its sleek shape is perfect for swim­ ming. It slashes prey with its claws and drains the body fluids.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Its sleek shape is perfect for swim­ ming. It slashes prey with its claws and drains the body fluids."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/kabutops.png",
+            "public/pokemon/shiny/kabutops.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0142": {
+        "name": "Aerodactyl",
+        "type": [
+            "Rock",
+            "Flying"
+        ],
+        "description": "A Pokémon that roamed the skies in the dinosaur era. Its teeth are like saw blades.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A Pokémon that roamed the skies in the dinosaur era. Its teeth are like saw blades."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/aerodactyl.png",
+            "public/pokemon/shiny/aerodactyl.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0143": {
+        "name": "Snorlax",
+        "type": [
+            "Normal"
+        ],
+        "description": "Very lazy. Just eats and sleeps. As its rotund bulk builds, it becomes steadily more slothful.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Very lazy. Just eats and sleeps. As its rotund bulk builds, it becomes steadily more slothful."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/snorlax.png",
+            "public/pokemon/shiny/snorlax.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0144": {
+        "name": "Articuno",
+        "type": [
+            "Ice",
+            "Flying"
+        ],
+        "description": "A legendary bird POKéMON that is said to appear to doomed people who are lost in icy mountains.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A legendary bird POKéMON that is said to appear to doomed people who are lost in icy mountains."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/articuno.png",
+            "public/pokemon/shiny/articuno.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0145": {
+        "name": "Zapdos",
+        "type": [
+            "Electric",
+            "Flying"
+        ],
+        "description": "A legendary bird POKéMON that is said to appear from clouds while dropping enormous lightning bolts.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A legendary bird POKéMON that is said to appear from clouds while dropping enormous lightning bolts."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/zapdos.png",
+            "public/pokemon/shiny/zapdos.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0146": {
+        "name": "Moltres",
+        "type": [
+            "Fire",
+            "Flying"
+        ],
+        "description": "Known as the legendary bird of fire. Every flap of its wings creates a dazzling flash of flames.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Known as the legendary bird of fire. Every flap of its wings creates a dazzling flash of flames."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/moltres.png",
+            "public/pokemon/shiny/moltres.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0147": {
+        "name": "Dratini",
+        "type": [
+            "Dragon"
+        ],
+        "description": "Long considered a mythical POKéMON until recently when a small colony was found living underwater.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "Long considered a mythical POKéMON until recently when a small colony was found living underwater."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/dratini.png",
+            "public/pokemon/shiny/dratini.png"
+        ],
+        "next_evolution": "0148",
+        "evolution_level": 30
+    },
+    "0148": {
+        "name": "Dragonair",
+        "type": [
+            "Dragon"
+        ],
+        "description": "A mystical POKéMON that exudes a gentle aura. Has the ability to change climate conditions.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "A mystical POKéMON that exudes a gentle aura. Has the ability to change climate conditions."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/dragonair.png",
+            "public/pokemon/shiny/dragonair.png"
+        ],
+        "next_evolution": "0149",
+        "evolution_level": 55
+    },
+    "0149": {
+        "name": "Dragonite",
+        "type": [
+            "Dragon",
+            "Flying"
+        ],
+        "description": "An extremely rarely seen marine POKéMON. Its intelligence is said to match that of humans.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "An extremely rarely seen marine POKéMON. Its intelligence is said to match that of humans."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/dragonite.png",
+            "public/pokemon/shiny/dragonite.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0150": {
+        "name": "Mewtwo",
+        "type": [
+            "Psychic"
+        ],
+        "description": "It was created by a scientist after years of horrific gene splicing and DNA engineering experiments.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "It was created by a scientist after years of horrific gene splicing and DNA engineering experiments."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/mewtwo.png",
+            "public/pokemon/shiny/mewtwo.png"
+        ],
+        "next_evolution": null,
+        "evolution_level": null
+    },
+    "0151": {
+        "name": "Mew",
+        "type": [
+            "Psychic"
+        ],
+        "description": "So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.",
+        "Pokédex entries": [
+            {
+                "game": "Base Game",
+                "entry": "So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide."
+            }
+        ],
+        "sprites": [
+            "public/pokemon/normal/mew.png",
+            "public/pokemon/shiny/mew.png"
         ],
         "next_evolution": null,
         "evolution_level": null

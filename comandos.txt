@@ -3,6 +3,14 @@ Creacion:
 
 Para iniciar el trabajo en el proyecto siempre se ejecuta:
 source venv/bin/activate
+./.venv/Scripts/Activate.ps1
+./.venv/Scripts/Activate.bat
+
+# Source - https://stackoverflow.com/a/77794655
+# Posted by Malchambar, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-02-19, License - CC BY-SA 4.0
+
+cd venv\Scripts\; .\activate.ps1 ; cd ..\..
 
 Instalacion de librerias
 pip install django djangorestframework django-cors-headers djangorestframework-simplejwt Pillow

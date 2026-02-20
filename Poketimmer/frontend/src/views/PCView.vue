@@ -48,51 +48,57 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pc-container">
-    <div class="pc-header">
-      <h2>SISTEMA DE ALMACENAMIENTO</h2>
-      <router-link to="/dashboard" class="btn-volver">⬅ Apagar PC</router-link>
-    </div>
-
-    <div v-if="cargando" class="loading">Iniciando sistema...</div>
-
-    <div class="pc-layout" v-else>
-      <div class="columna equipo-col">
-        <h3 class="box-title">EQUIPO ACTIVO ({{ equipo.length }}/6)</h3>
-        <div class="grid">
-          <div
-            v-for="poke in equipo"
-            :key="poke.id"
-            class="card-mini"
-            @click="moverPokemon(poke)">
-            <div class="sprite-bg">
-              <img :src="poke.especie_info.sprite_url" alt="" />
-            </div>
-            <div class="info">
-              <strong>{{ poke.apodo || poke.especie_info.nombre }}</strong>
-              <span>Nv. {{ poke.nivel }}</span>
-            </div>
-            <span class="flecha">Depositar ➡</span>
-          </div>
+  <div class="page-shell">
+    <div class="page-card">
+      <div class="pc-container">
+        <div class="pc-header">
+          <h2>SISTEMA DE ALMACENAMIENTO</h2>
+          <router-link to="/dashboard" class="btn-volver"
+            >⬅ Apagar PC</router-link
+          >
         </div>
-      </div>
 
-      <div class="columna caja-col">
-        <h3 class="box-title">CAJA 1</h3>
-        <div class="grid grid-caja">
-          <div
-            v-for="poke in caja"
-            :key="poke.id"
-            class="card-mini caja-mini"
-            @click="moverPokemon(poke)">
-            <div class="sprite-bg">
-              <img :src="poke.especie_info.sprite_url" alt="" />
+        <div v-if="cargando" class="loading">Iniciando sistema...</div>
+
+        <div class="pc-layout" v-else>
+          <div class="columna equipo-col">
+            <h3 class="box-title">EQUIPO ACTIVO ({{ equipo.length }}/6)</h3>
+            <div class="grid">
+              <div
+                v-for="poke in equipo"
+                :key="poke.id"
+                class="card-mini"
+                @click="moverPokemon(poke)">
+                <div class="sprite-bg">
+                  <img :src="poke.especie_info.sprite_url" alt="" />
+                </div>
+                <div class="info">
+                  <strong>{{ poke.apodo || poke.especie_info.nombre }}</strong>
+                  <span>Nv. {{ poke.nivel }}</span>
+                  <span class="flecha">Depositar ➡ </span>
+                </div>
+              </div>
             </div>
-            <div class="info">
-              <strong>{{ poke.apodo || poke.especie_info.nombre }}</strong>
-              <span>Nv. {{ poke.nivel }}</span>
+          </div>
+          <br />
+          <div class="columna caja-col">
+            <h3 class="box-title">CAJA 1</h3>
+            <div class="grid grid-caja">
+              <div
+                v-for="poke in caja"
+                :key="poke.id"
+                class="card-mini caja-mini"
+                @click="moverPokemon(poke)">
+                <div class="sprite-bg">
+                  <img :src="poke.especie_info.sprite_url" alt="" />
+                </div>
+                <div class="info">
+                  <strong>{{ poke.apodo || poke.especie_info.nombre }}</strong>
+                  <span>Nv. {{ poke.nivel }}</span>
+                </div>
+                <span class="flecha-hover"> ⬅ Retirar</span>
+              </div>
             </div>
-            <span class="flecha-hover">⬅ Retirar</span>
           </div>
         </div>
       </div>
@@ -108,30 +114,29 @@ onMounted(() => {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color: white;
+  color: var(--paragraph);
 }
 .pc-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 6px solid #2980b9;
+  border-bottom: 6px solid var(--secondary);
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
 .pc-header h2 {
-  color: #3498db;
+  color: var(--headline);
   margin: 0;
-  font-size: 2.5rem;
-  text-shadow: 2px 2px #000;
+  font-size: 2.2rem;
 }
 .btn-volver {
-  background: #e74c3c;
-  color: white;
+  background: var(--tertiary);
+  color: var(--headline);
   padding: 10px 20px;
   text-decoration: none;
-  border: 4px solid #c0392b;
-  border-radius: 5px;
-  font-weight: bold;
+  border: 4px solid var(--stroke);
+  border-radius: 8px;
+  font-weight: 800;
 }
 .loading {
   text-align: center;
@@ -147,28 +152,28 @@ onMounted(() => {
 }
 .columna {
   flex: 1;
-  background: #2c3e50;
-  padding: 20px;
-  border-radius: 10px;
-  border: 6px solid #34495e;
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  background: rgba(242, 238, 245, 0.95);
+  padding: 18px;
+  border-radius: 12px;
+  border: 4px solid var(--stroke);
+  box-shadow: 6px 6px 0px rgba(153, 79, 243, 0.08) inset;
   overflow-y: auto;
   max-height: 75vh;
 }
 
 .box-title {
   text-align: center;
-  background: #f1c40f;
-  color: #333;
+  background: var(--tertiary);
+  color: var(--headline);
   padding: 8px;
-  border-radius: 3px;
-  border: 4px solid #f39c12;
+  border-radius: 6px;
+  border: 4px solid var(--stroke);
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 .equipo-col .box-title {
-  background: #2ecc71;
-  border-color: #27ae60;
+  background: var(--highlight);
+  border-color: var(--stroke);
 }
 
 .grid {
@@ -185,18 +190,18 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 15px;
-  background: #34495e;
-  padding: 10px;
-  border-radius: 8px;
+  background: var(--elements-bg);
+  padding: 12px;
+  border-radius: 10px;
   cursor: pointer;
-  border: 4px solid #2c3e50;
+  border: 4px solid var(--stroke);
   transition:
     transform 0.1s,
     border-color 0.2s;
 }
 .card-mini:hover {
-  border-color: #f1c40f;
-  transform: scale(1.02);
+  transform: translateX(4px);
+  border-color: var(--secondary);
 }
 
 .caja-mini {
@@ -206,10 +211,10 @@ onMounted(() => {
   position: relative;
 }
 .sprite-bg {
-  background: #ecf0f1;
+  background: var(--main);
   border-radius: 50%;
-  padding: 5px;
-  border: 4px solid #bdc3c7;
+  padding: 6px;
+  border: 4px solid var(--stroke);
 }
 .card-mini img {
   width: 60px;
@@ -223,12 +228,12 @@ onMounted(() => {
   font-size: 1.2rem;
 }
 .info strong {
-  color: #fff;
+  color: var(--headline);
   text-transform: uppercase;
   text-shadow: 1px 1px #000;
 }
 .info span {
-  color: #f1c40f;
+  color: var(--tertiary);
 }
 
 .flecha {

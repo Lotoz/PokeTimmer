@@ -5,16 +5,34 @@ const props = defineProps({
   tareas: Array,
 });
 
-//SI esto falla de nuevo, seguramente iniciaste antes el electron y luego el vite.
-const emit = defineEmits(["agregar", "toggle", "eliminar"]);
+const emit = defineEmits(["agregar", "toggle", "eliminar", "editar"]);
 const nuevaTarea = ref("");
+const editingId = ref(null);
+const editingTitulo = ref("");
 
 const submitAgregar = () => {
-  console.log("Intentando agregar tarea:", nuevaTarea.value);
   if (nuevaTarea.value.trim()) {
     emit("agregar", nuevaTarea.value);
     nuevaTarea.value = "";
   }
+};
+
+const iniciarEdicion = (tarea) => {
+  editingId.value = tarea.id;
+  editingTitulo.value = tarea.titulo;
+};
+
+const guardarEdicion = (tareaId) => {
+  if (editingTitulo.value.trim()) {
+    emit("editar", { id: tareaId, titulo: editingTitulo.value });
+    editingId.value = null;
+    editingTitulo.value = "";
+  }
+};
+
+const cancelarEdicion = () => {
+  editingId.value = null;
+  editingTitulo.value = "";
 };
 </script>
 <template>
@@ -39,16 +57,43 @@ const submitAgregar = () => {
         :key="tarea.id"
         class="tarea-item"
         :class="{ completada: tarea.completada }">
-        <label class="tarea-content">
+        <!-- Vista normal -->
+        <template v-if="editingId !== tarea.id">
+          <label class="tarea-content">
+            <input
+              type="checkbox"
+              :checked="tarea.completada"
+              @change="$emit('toggle', tarea)" />
+            <span class="tarea-texto">{{ tarea.titulo }}</span>
+          </label>
+          <div class="tarea-actions">
+            <button
+              @click="iniciarEdicion(tarea)"
+              class="btn-edit-task"
+              title="Editar">
+              ✏️
+            </button>
+            <button @click="$emit('eliminar', tarea.id)" class="btn-delete">
+              X
+            </button>
+          </div>
+        </template>
+
+        <!-- Modo edición -->
+        <template v-else>
           <input
-            type="checkbox"
-            :checked="tarea.completada"
-            @change="$emit('toggle', tarea)" />
-          <span class="tarea-texto">{{ tarea.titulo }}</span>
-        </label>
-        <form @submit.prevent="$emit('eliminar', tarea.id)" style="margin: 0">
-          <button type="submit" class="btn-delete">X</button>
-        </form>
+            v-model="editingTitulo"
+            @keyup.enter="guardarEdicion(tarea.id)"
+            @keyup.escape="cancelarEdicion"
+            class="edit-input"
+            placeholder="Editar tarea..." />
+          <div class="edit-actions">
+            <button @click="guardarEdicion(tarea.id)" class="btn-save">
+              ✓
+            </button>
+            <button @click="cancelarEdicion" class="btn-cancel-edit">✕</button>
+          </div>
+        </template>
       </li>
     </ul>
   </section>
@@ -56,38 +101,42 @@ const submitAgregar = () => {
 
 <style scoped>
 .panel {
-  background: #b93f37;
-  border-radius: 10px;
-  padding: 20px;
-  border: 4px solid #ae7a00;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background: rgba(242, 238, 245, 0.96);
+  border-radius: 12px;
+  padding: 18px;
+  border: 3px solid var(--stroke);
+  box-shadow: 8px 8px 0px rgba(153, 79, 243, 0.08);
 }
 .add-task-form {
   display: flex;
-  margin-bottom: 15px;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 .add-task-form input {
   flex-grow: 1;
-  padding: 10px;
-  background: #1a252f;
-  border: 2px solid #7f8c8d;
-  color: white;
+  padding: 10px 12px;
+  background: var(--elements-bg);
+  border: 3px solid var(--stroke);
+  color: var(--paragraph);
   font-family: inherit;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  border-radius: 8px;
 }
 .btn-add {
-  background: #2ecc71;
-  color: white;
-  border: none;
-  padding: 0 20px;
+  background: var(--button);
+  color: var(--button-text);
+  border: 3px solid var(--stroke);
+  padding: 6px 12px;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  font-weight: 800;
 }
 .tareas-panel ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 300px;
+  max-height: 320px;
   overflow-y: auto;
 }
 .tarea-item {
@@ -95,28 +144,108 @@ const submitAgregar = () => {
   justify-content: space-between;
   align-items: center;
   padding: 12px;
-  border-bottom: 2px solid #34495e;
-  background: #34495e;
-  margin-bottom: 5px;
-  border-radius: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--elements-bg);
+  margin-bottom: 8px;
+  border-radius: 8px;
 }
 .tarea-item.completada .tarea-texto {
   text-decoration: line-through;
-  color: #7f8c8d;
+  color: #9aa2a6;
 }
 .tarea-content {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   cursor: pointer;
   width: 100%;
 }
-.btn-delete {
-  background: #e74c3c;
-  color: white;
+
+.tarea-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.btn-edit-task {
+  background: transparent;
+  color: var(--highlight);
   border: none;
-  border-radius: 3px;
   cursor: pointer;
-  padding: 5px 10px;
+  font-size: 1rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.btn-edit-task:hover {
+  background: rgba(79, 196, 207, 0.2);
+}
+
+.edit-input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 2px solid var(--highlight);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--paragraph);
+}
+
+.edit-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 196, 207, 0.2);
+}
+
+.edit-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-save,
+.btn-cancel-edit {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-weight: 800;
+}
+
+.btn-save {
+  color: #51c91e;
+}
+
+.btn-save:hover {
+  background: rgba(81, 201, 30, 0.2);
+}
+
+.btn-cancel-edit {
+  color: #e74c3c;
+}
+
+.btn-cancel-edit:hover {
+  background: rgba(231, 76, 60, 0.2);
+}
+.btn-delete {
+  background: transparent;
+  color: #c0392b;
+  border: 3px solid #f8d6d6;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 6px 10px;
+  font-weight: 800;
+}
+
+@media (max-width: 720px) {
+  .pokemon-grid,
+  .tareas-panel ul {
+    max-height: 240px;
+  }
+  .add-task-form input {
+    font-size: 1rem;
+  }
 }
 </style>

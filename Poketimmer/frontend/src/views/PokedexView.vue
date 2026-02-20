@@ -1,32 +1,78 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import api from "../api/axios";
+import showAlert from "../utils/prettyAlert";
 
 const pokemons = ref([]);
 const cargando = ref(true);
 
+const tiposConfig = {
+  grass: { color: "#51c91e", emoji: "🌿" },
+  poison: { color: "#a040a0", emoji: "☠️" },
+  fire: { color: "#ff6b35", emoji: "🔥" },
+  water: { color: "#4fc4cf", emoji: "💧" },
+  bug: { color: "#a8b820", emoji: "🐛" },
+  normal: { color: "#a8a878", emoji: "🔘" },
+  electric: { color: "#ffd700", emoji: "⚡" },
+  ground: { color: "#915d3a", emoji: "🌍" },
+  fairy: { color: "#ee99ac", emoji: "✨" },
+  fighting: { color: "#d4492d", emoji: "✊" },
+  psychic: { color: "#f85888", emoji: "🧠" },
+  rock: { color: "#b8a038", emoji: "🪨" },
+  steel: { color: "#b8b8d0", emoji: "⚙️" },
+  ice: { color: "#a0e7e8", emoji: "❄️" },
+  ghost: { color: "#705898", emoji: "👻" },
+  dragon: { color: "#7038f8", emoji: "🐉" },
+  dark: { color: "#705848", emoji: "🌑" },
+  flying: { color: "#a8a8e8", emoji: "🦅" },
+};
+
+const getTypeStyle = (tipo) => {
+  if (!tipo) return { color: "#9db3b3", emoji: "❓" };
+  const normalized = tipo
+    .toLowerCase()
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "");
+  return tiposConfig[normalized] || { color: "#9db3b3", emoji: "❓" };
+};
+
 const adoptar = async (poke) => {
-  if (!confirm(`¿Quieres intentar capturar a ${poke.nombre}?`)) return;
+  const modoShiny = !!poke.mostrarShiny;
+  const textoForma = modoShiny ? "SHINY" : "NORMAL";
+
+  if (!confirm(`¿Quieres intentar capturar a ${poke.nombre} (${textoForma})?`))
+    return;
 
   try {
     await api.post("mis-pokemon/", {
       especie: poke.id,
       apodo: poke.nombre,
       en_equipo: false,
+      es_shiny: modoShiny, // Enviamos la elección al backend
     });
-    alert(`¡Gotcha! ${poke.nombre} fue transferido al PC.`);
+    showAlert(
+      `¡Gotcha! ${poke.nombre} ${textoForma} fue transferido al PC.`,
+      "success",
+    );
   } catch (error) {
     console.error(error);
-    alert("Error al capturar. Quizás ya tienes demasiados de esta especie.");
+    showAlert(
+      "Error al capturar. Quizás ya tienes demasiados de esta especie.",
+      "error",
+    );
   }
 };
 
 onMounted(async () => {
   try {
     const res = await api.get("pokedex/");
-    pokemons.value = res.data;
+    // Inicializamos mostrarShiny en false para cada pokemon cargado
+    pokemons.value = res.data.map((p) => ({ ...p, mostrarShiny: false }));
   } catch (e) {
     console.error(e);
+    showAlert("Error al cargar pokédex.", "error");
   } finally {
     cargando.value = false;
   }
@@ -34,28 +80,73 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="pokedex-container">
-    <div class="pokedex-header">
-      <h2>POKÉDEX DE KANTO</h2>
-      <router-link to="/dashboard" class="btn-volver"
-        >⬅ Volver al Centro</router-link
-      >
-    </div>
-
-    <div v-if="cargando" class="loading">Cargando base de datos...</div>
-
-    <div class="grid-pokedex">
-      <div v-for="poke in pokemons" :key="poke.id" class="poke-card">
-        <span class="num">N.º {{ poke.numero }}</span>
-        <div class="sprite-container">
-          <img :src="poke.sprite_url" :alt="poke.nombre" />
+  <div class="page-shell">
+    <div class="page-card">
+      <div class="pokedex-container">
+        <div class="pokedex-header">
+          <h2>📖 POKÉDEX DE KANTO</h2>
+          <router-link to="/dashboard" class="btn-volver"
+            >⬅ Volver al Centro</router-link
+          >
         </div>
-        <h3>{{ poke.nombre }}</h3>
-        <span class="tipo">{{ poke.tipo_principal }}</span>
 
-        <button @click="adoptar(poke)" class="btn-adoptar">
-          Lanzar Poké Ball
-        </button>
+        <div v-if="cargando" class="loading">Cargando base de datos...</div>
+
+        <div v-else class="grid-pokedex">
+          <div
+            v-for="poke in pokemons"
+            :key="poke.id"
+            class="poke-card"
+            :class="{ 'card-shiny': poke.mostrarShiny }">
+            <span class="num">N.º {{ poke.numero }}</span>
+
+            <div class="sprite-container">
+              <img
+                :src="
+                  poke.mostrarShiny ? poke.sprite_shiny_url : poke.sprite_url
+                "
+                :alt="poke.nombre" />
+
+              <button
+                v-if="poke.sprite_shiny_url"
+                @click="poke.mostrarShiny = !poke.mostrarShiny"
+                class="btn-shiny-toggle"
+                :class="{ active: poke.mostrarShiny }"
+                title="Alternar forma Shiny">
+                ✨
+              </button>
+            </div>
+
+            <h3>{{ poke.nombre }}</h3>
+
+            <div class="tipos-container">
+              <span
+                class="tipo"
+                :style="{
+                  backgroundColor: getTypeStyle(poke.tipo_principal).color,
+                }">
+                {{ getTypeStyle(poke.tipo_principal).emoji }}
+                {{ poke.tipo_principal }}
+              </span>
+              <span
+                v-if="poke.tipo_secundario"
+                class="tipo"
+                :style="{
+                  backgroundColor: getTypeStyle(poke.tipo_secundario).color,
+                }">
+                {{ getTypeStyle(poke.tipo_secundario).emoji }}
+                {{ poke.tipo_secundario }}
+              </span>
+            </div>
+
+            <button
+              @click="adoptar(poke)"
+              class="btn-adoptar"
+              :class="{ 'btn-shiny': poke.mostrarShiny }">
+              Capturar {{ poke.mostrarShiny ? "Shiny" : "" }}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -66,108 +157,278 @@ onMounted(async () => {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  color: #ecf0f1;
+  color: var(--paragraph);
 }
+
 .pokedex-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 6px solid #c0392b;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  border-bottom: 4px solid var(--secondary);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
 }
+
 .pokedex-header h2 {
-  color: #e74c3c;
+  color: var(--headline);
   margin: 0;
-  font-size: 2.5rem;
-  text-shadow: 2px 2px #000;
+  font-size: 2rem;
+  font-weight: 800;
 }
+
 .btn-volver {
-  background: #34495e;
-  color: white;
-  padding: 10px 20px;
+  background: var(--button);
+  color: var(--button-text);
+  padding: 10px 18px;
   text-decoration: none;
-  border: 4px solid #2c3e50;
-  border-radius: 5px;
-  font-weight: bold;
+  border: 3px solid var(--stroke);
+  border-radius: 8px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
 }
+
 .btn-volver:hover {
-  background: #2c3e50;
+  background: var(--tertiary);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px rgba(24, 24, 24, 0.9);
 }
+
 .loading {
   font-size: 1.5rem;
   text-align: center;
   margin-top: 50px;
-  color: #f1c40f;
+  color: var(--highlight);
   animation: blink 1s infinite;
 }
+
 @keyframes blink {
   50% {
-    opacity: 0;
+    opacity: 0.5;
   }
 }
 
 .grid-pokedex {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
 }
+
 .poke-card {
-  background: #e74c3c;
-  border-radius: 10px;
-  padding: 15px;
-  border: 4px solid #c0392b;
+  background: rgba(242, 238, 245, 0.92);
+  border-radius: 12px;
+  padding: 14px;
+  border: 3px solid var(--stroke);
   text-align: center;
-  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 8px 8px 0px rgba(153, 79, 243, 0.12);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
+
+.poke-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0px rgba(153, 79, 243, 0.16);
+}
+
 .num {
   display: block;
   text-align: left;
-  font-weight: bold;
-  color: #f1c40f;
-  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--secondary);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
 }
+
+/* Contenedor sprite - ARREGLADO para mantener consistencia */
 .sprite-container {
-  background: #ecf0f1;
-  border-radius: 5px;
-  border: 4px solid #bdc3c7;
+  position: relative;
+  background: var(--elements-bg);
+  border-radius: 8px;
+  border: 3px solid var(--stroke);
   margin: 10px 0;
-  padding: 10px;
+  padding: 8px;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
 }
+
 .poke-card img {
-  width: 100px;
-  height: 100px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   image-rendering: pixelated;
+  object-fit: contain;
+  transition: opacity 0.2s ease; /* Transición suave entre normal/shiny */
 }
+
 .poke-card h3 {
-  color: white;
+  color: var(--headline);
   text-transform: uppercase;
-  margin: 10px 0 5px;
-  font-size: 1.5rem;
-  text-shadow: 1px 1px #000;
+  margin: 8px 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
+
+.tipos-container {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin: 8px 0;
+  flex-wrap: wrap;
+}
+
 .tipo {
-  background: #34495e;
-  padding: 4px 10px;
-  border-radius: 3px;
-  font-size: 1rem;
-  border: 2px solid #2c3e50;
-  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  border: 2px solid var(--stroke);
+  text-transform: capitalize;
+  font-weight: 700;
+  color: white;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
 }
-.btn-adoptar {
-  background: #f1c40f;
-  color: #333;
-  border: 4px solid #f39c12;
-  padding: 8px 15px;
+
+/* Botón flotante para cambiar a Shiny */
+.btn-shiny-toggle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: white;
+  border: 2px solid var(--stroke);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 1.2rem;
-  border-radius: 5px;
-  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0px var(--stroke);
+  z-index: 2;
+}
+
+.btn-shiny-toggle:hover {
+  transform: scale(1.05);
+}
+
+.btn-shiny-toggle.active {
+  background: #f1c40f;
+  transform: scale(1.2);
+  box-shadow: 3px 3px 0px var(--stroke);
+}
+
+/* Card styling cuando es shiny */
+.card-shiny {
+  border-color: #f1c40f !important;
+  background: linear-gradient(
+    145deg,
+    rgba(242, 238, 245, 0.92),
+    rgba(255, 249, 200, 0.92)
+  ) !important;
+}
+
+.btn-adoptar {
+  background: var(--button);
+  color: var(--button-text);
+  border: 3px solid var(--stroke);
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 8px;
+  margin-top: auto; /* Empuja el botón al fondo */
   width: 100%;
   text-transform: uppercase;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px rgba(24, 24, 24, 0.9);
 }
+
 .btn-adoptar:hover {
-  background: #f39c12;
+  background: var(--tertiary);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(24, 24, 24, 0.9);
+}
+
+.btn-adoptar:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px rgba(24, 24, 24, 0.9);
+}
+
+.btn-shiny {
+  background: #f1c40f !important;
+  color: #333 !important;
+}
+
+@media (max-width: 768px) {
+  .pokedex-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .pokedex-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .grid-pokedex {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+
+  .poke-card {
+    padding: 12px;
+  }
+
+  .sprite-container {
+    height: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pokedex-container {
+    padding: 12px;
+  }
+
+  .pokedex-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .grid-pokedex {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .poke-card {
+    padding: 10px;
+  }
+
+  .sprite-container {
+    height: 100px;
+    padding: 6px;
+  }
+
+  .btn-adoptar {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .btn-shiny-toggle {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
 }
 </style>
