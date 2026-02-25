@@ -1,11 +1,30 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
+import { useRoute } from "vue-router";
 import api from "../api/axios";
 import showAlert from "../utils/prettyAlert";
+import { getLocalPath } from "../utils/imagePaths";
 
 const pokemons = ref([]);
 const cargando = ref(true);
+const route = useRoute();
 
+const searchName = ref("");
+const searchNumber = ref("");
+
+const filteredPokemons = computed(() => {
+  return pokemons.value.filter((p) => {
+    const matchesName = searchName.value
+      ? p.nombre.toLowerCase().includes(searchName.value.toLowerCase())
+      : true;
+    const matchesNumber = searchNumber.value
+      ? String(p.numero).includes(String(searchNumber.value))
+      : true;
+    return matchesName && matchesNumber;
+  });
+});
+
+// TIPOS: usamos emojis para los iconos de tipo (me lo pediste así)
 const tiposConfig = {
   grass: { color: "#51c91e", emoji: "🌿" },
   poison: { color: "#a040a0", emoji: "☠️" },
@@ -14,7 +33,7 @@ const tiposConfig = {
   bug: { color: "#a8b820", emoji: "🐛" },
   normal: { color: "#a8a878", emoji: "🔘" },
   electric: { color: "#ffd700", emoji: "⚡" },
-  ground: { color: "#915d3a", emoji: "🌍" },
+  ground: { color: "#915d3a", emoji: "🟫" },
   fairy: { color: "#ee99ac", emoji: "✨" },
   fighting: { color: "#d4492d", emoji: "✊" },
   psychic: { color: "#f85888", emoji: "🧠" },
@@ -42,11 +61,15 @@ const adoptar = async (poke) => {
   const modoShiny = !!poke.mostrarShiny;
   const textoForma = modoShiny ? "SHINY" : "NORMAL";
 
-  if (!confirm(`¿Quieres intentar capturar a ${poke.nombre} (${textoForma})?`))
+  if (
+    !(await confirm(
+      `¿Quieres intentar capturar a ${poke.nombre} (${textoForma})?`,
+    ))
+  )
     return;
 
   try {
-    await api.post("mis-pokemon/", {
+    const response = await api.post("mis-pokemon/", {
       especie: poke.id,
       apodo: poke.nombre,
       en_equipo: false,
@@ -56,6 +79,8 @@ const adoptar = async (poke) => {
       `¡Gotcha! ${poke.nombre} ${textoForma} fue transferido al PC.`,
       "success",
     );
+    // Reset mostrarShiny después de capturar
+    poke.mostrarShiny = false;
   } catch (error) {
     console.error(error);
     showAlert(
@@ -70,6 +95,9 @@ onMounted(async () => {
     const res = await api.get("pokedex/");
     // Inicializamos mostrarShiny en false para cada pokemon cargado
     pokemons.value = res.data.map((p) => ({ ...p, mostrarShiny: false }));
+    // Si vienen query params desde otra vista, inicializamos búsqueda
+    if (route.query.name) searchName.value = route.query.name;
+    if (route.query.num) searchNumber.value = route.query.num;
   } catch (e) {
     console.error(e);
     showAlert("Error al cargar pokédex.", "error");
@@ -84,67 +112,109 @@ onMounted(async () => {
     <div class="page-card">
       <div class="pokedex-container">
         <div class="pokedex-header">
-          <h2>📖 POKÉDEX DE KANTO</h2>
+          <h2>
+            <i class="bi bi-book-half" aria-hidden="true"></i> POKÉDEX DE KANTO
+          </h2>
           <router-link to="/dashboard" class="btn-volver"
-            >⬅ Volver al Centro</router-link
+            ><i
+              class="bi bi-arrow-left"
+              aria-hidden="true"
+              style="margin-right: 6px"></i>
+            Volver al Inicio</router-link
           >
         </div>
 
         <div v-if="cargando" class="loading">Cargando base de datos...</div>
 
-        <div v-else class="grid-pokedex">
+        <div v-else>
           <div
-            v-for="poke in pokemons"
-            :key="poke.id"
-            class="poke-card"
-            :class="{ 'card-shiny': poke.mostrarShiny }">
-            <span class="num">N.º {{ poke.numero }}</span>
+            class="search-bar"
+            style="
+              display: flex;
+              gap: 10px;
+              margin-bottom: 14px;
+              align-items: center;
+            ">
+            <input
+              v-model="searchName"
+              placeholder="Buscar por nombre..."
+              class="form-input"
+              style="flex: 1" />
+            <input
+              v-model="searchNumber"
+              placeholder="# Número"
+              type="number"
+              class="form-input"
+              style="width: 120px" />
+            <button
+              @click="
+                searchName = '';
+                searchNumber = '';
+              "
+              class="btn-volver"
+              style="padding: 8px 12px">
+              Limpiar
+            </button>
+          </div>
 
-            <div class="sprite-container">
-              <img
-                :src="
-                  poke.mostrarShiny ? poke.sprite_shiny_url : poke.sprite_url
-                "
-                :alt="poke.nombre" />
+          <div class="grid-pokedex">
+            <div
+              v-for="poke in filteredPokemons"
+              :key="poke.id"
+              class="poke-card"
+              :class="{ 'card-shiny': poke.mostrarShiny }">
+              <span class="num">N.º {{ poke.numero }}</span>
+
+              <div class="sprite-container">
+                <img
+                  :src="
+                    getLocalPath(
+                      poke.mostrarShiny
+                        ? poke.sprite_shiny_url
+                        : poke.sprite_url,
+                    )
+                  "
+                  :alt="poke.nombre" />
+
+                <button
+                  v-if="poke.sprite_shiny_url"
+                  @click="poke.mostrarShiny = !poke.mostrarShiny"
+                  class="btn-shiny-toggle"
+                  :class="{ active: poke.mostrarShiny }"
+                  title="Alternar forma Shiny">
+                  <i class="bi bi-stars" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <h3>{{ poke.nombre }}</h3>
+
+              <div class="tipos-container">
+                <span
+                  class="tipo"
+                  :style="{
+                    backgroundColor: getTypeStyle(poke.tipo_principal).color,
+                  }">
+                  {{ getTypeStyle(poke.tipo_principal).emoji }}
+                  {{ poke.tipo_principal }}
+                </span>
+                <span
+                  v-if="poke.tipo_secundario"
+                  class="tipo"
+                  :style="{
+                    backgroundColor: getTypeStyle(poke.tipo_secundario).color,
+                  }">
+                  {{ getTypeStyle(poke.tipo_secundario).emoji }}
+                  {{ poke.tipo_secundario }}
+                </span>
+              </div>
 
               <button
-                v-if="poke.sprite_shiny_url"
-                @click="poke.mostrarShiny = !poke.mostrarShiny"
-                class="btn-shiny-toggle"
-                :class="{ active: poke.mostrarShiny }"
-                title="Alternar forma Shiny">
-                ✨
+                @click="adoptar(poke)"
+                class="btn-adoptar"
+                :class="{ 'btn-shiny': poke.mostrarShiny }">
+                Capturar {{ poke.mostrarShiny ? "Shiny" : "" }}
               </button>
             </div>
-
-            <h3>{{ poke.nombre }}</h3>
-
-            <div class="tipos-container">
-              <span
-                class="tipo"
-                :style="{
-                  backgroundColor: getTypeStyle(poke.tipo_principal).color,
-                }">
-                {{ getTypeStyle(poke.tipo_principal).emoji }}
-                {{ poke.tipo_principal }}
-              </span>
-              <span
-                v-if="poke.tipo_secundario"
-                class="tipo"
-                :style="{
-                  backgroundColor: getTypeStyle(poke.tipo_secundario).color,
-                }">
-                {{ getTypeStyle(poke.tipo_secundario).emoji }}
-                {{ poke.tipo_secundario }}
-              </span>
-            </div>
-
-            <button
-              @click="adoptar(poke)"
-              class="btn-adoptar"
-              :class="{ 'btn-shiny': poke.mostrarShiny }">
-              Capturar {{ poke.mostrarShiny ? "Shiny" : "" }}
-            </button>
           </div>
         </div>
       </div>
@@ -158,6 +228,21 @@ onMounted(async () => {
   max-width: 1200px;
   margin: 0 auto;
   color: var(--paragraph);
+}
+
+/* Inputs styled to match ListaTareas.vue */
+.form-input {
+  padding: 10px 12px;
+  background: var(--elements-bg);
+  border: 3px solid var(--stroke);
+  color: var(--paragraph);
+  font-family: inherit;
+  font-size: 1.05rem;
+  border-radius: 8px;
+}
+
+.form-input[type="number"] {
+  width: 120px;
 }
 
 .pokedex-header {

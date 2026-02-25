@@ -49,7 +49,11 @@ class MiPokemonViewSet(viewsets.ModelViewSet):
         return PokemonUsuario.objects.filter(entrenador=self.request.user)
 
     def perform_create(self, serializer):
-        serializer.save(entrenador=self.request.user)
+        pokemon = serializer.save(entrenador=self.request.user)
+        # Calcular el nivel inicial basado en la cadena evolutiva
+        nivel_inicial = pokemon.calcular_nivel_inicial()
+        pokemon.nivel = nivel_inicial
+        pokemon.save()
 
 class PokedexViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = PokedexEntry.objects.all()

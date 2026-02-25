@@ -1,4 +1,6 @@
 <script setup>
+import { getLocalPath } from "../utils/imagePaths";
+
 defineProps({
   equipo: Array,
 });
@@ -8,9 +10,21 @@ defineProps({
   <section class="panel equipo-panel">
     <h3>Tu Equipo Actual ({{ equipo.length }}/6)</h3>
     <div class="pokemon-grid">
-      <div v-for="poke in equipo" :key="poke.id" class="poke-card">
+      <div
+        v-for="poke in equipo"
+        :key="poke.id"
+        class="poke-card"
+        :class="{ 'card-shiny': poke.es_shiny }">
         <div class="poke-sprite-wrapper">
-          <img :src="poke.especie_info.sprite_url" :alt="poke.apodo" />
+          <img
+            :src="
+              getLocalPath(
+                poke.es_shiny
+                  ? poke.especie_info.sprite_shiny_url
+                  : poke.especie_info.sprite_url,
+              )
+            "
+            :alt="poke.apodo" />
         </div>
         <div class="poke-info">
           <span class="poke-name">{{
@@ -58,6 +72,14 @@ defineProps({
   padding: 12px;
   text-align: center;
   border: 3px solid var(--stroke);
+}
+.poke-card.card-shiny {
+  border-color: #f1c40f !important;
+  background: linear-gradient(
+    145deg,
+    var(--elements-bg),
+    rgba(255, 249, 200, 0.2)
+  ) !important;
 }
 .poke-sprite-wrapper {
   background: var(--main);

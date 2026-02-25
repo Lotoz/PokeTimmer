@@ -20,7 +20,8 @@ class MiPokemonSerializer(serializers.ModelSerializer):
     class Meta:
         model = PokemonUsuario
         # AÑADIDO: 'es_shiny' para saber qué sprite mostrar en el Dashboard/PC
-        fields = ['id', 'apodo', 'nivel', 'experiencia', 'en_equipo', 'es_shiny', 'especie', 'especie_info']
+        # AÑADIDO: 'piedra_eterna' para evitar que evolucione
+        fields = ['id', 'apodo', 'nivel', 'experiencia', 'en_equipo', 'es_shiny', 'piedra_eterna', 'especie', 'especie_info']
         read_only_fields = ['nivel', 'experiencia', 'entrenador'] 
 
     def validate_en_equipo(self, value):
@@ -47,7 +48,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Usuario
-        fields = ['id', 'username', 'email', 'foto_perfil', 'tema_app', 'pomo_tiempo_trabajo', 'pomo_tiempo_descanso', 'password']
+        fields = ['id', 'username', 'email', 'foto_perfil', 'tema_app', 'pomo_tiempo_trabajo', 'pomo_tiempo_descanso', 'pomo_tiempo_descanso_largo', 'pomo_ciclos', 'password']
     
     def update(self, instance, validated_data):
         password = validated_data.pop('password', None)

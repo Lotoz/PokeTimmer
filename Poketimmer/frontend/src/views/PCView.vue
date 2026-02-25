@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import api from "../api/axios";
+import { getLocalPath } from "../utils/imagePaths";
 
 const pokemonBox = ref([]);
 const cargando = ref(true);
@@ -24,7 +25,7 @@ const moverPokemon = async (poke) => {
     await actualizarEstado(poke, false);
   } else {
     if (equipo.value.length >= 6) {
-      alert("¡Tu equipo está lleno! Mueve uno a la caja primero.");
+      await alert("¡Tu equipo está lleno! Mueve uno a la caja primero.");
       return;
     }
     await actualizarEstado(poke, true);
@@ -38,7 +39,71 @@ const actualizarEstado = async (poke, nuevoEstado) => {
     });
     poke.en_equipo = nuevoEstado;
   } catch (e) {
-    alert("Error de conexión con el servidor de PC.");
+    await alert("Error de conexión con el servidor de PC.");
+  }
+};
+
+const liberarPokemon = async (poke, event) => {
+  event.stopPropagation();
+
+  const nombrePoke = poke.apodo || poke.especie_info.nombre;
+  if (!(await confirm(`¿Liberar a ${nombrePoke}? ¡No podrás recuperarlo!`)))
+    return;
+
+  try {
+    await api.delete(`mis-pokemon/${poke.id}/`);
+    pokemonBox.value = pokemonBox.value.filter((p) => p.id !== poke.id);
+  } catch (e) {
+    await alert("Error al liberar el Pokémon.");
+  }
+};
+
+const cambiarApodo = async (poke, event) => {
+  event.stopPropagation();
+
+  const nuevoApodo = await window.prettyDialog.prompt(
+    poke.apodo || poke.especie_info.nombre,
+    "Renombrar Pokémon",
+    poke.apodo || poke.especie_info.nombre,
+  );
+
+  if (nuevoApodo === null || nuevoApodo === undefined) return; // Canceló
+
+  if (nuevoApodo.trim() === "") {
+    await alert("El apodo no puede estar vacío");
+    return;
+  }
+
+  try {
+    await api.patch(`mis-pokemon/${poke.id}/`, {
+      apodo: nuevoApodo.trim(),
+    });
+    poke.apodo = nuevoApodo.trim();
+  } catch (e) {
+    await alert("Error al cambiar el apodo.");
+  }
+};
+
+const alternarPiedraEterna = async (poke, event) => {
+  event.stopPropagation();
+
+  const estado = poke.piedra_eterna ? "activada" : "desactivada";
+  const accion = poke.piedra_eterna ? "quitar la" : "poner la";
+
+  if (
+    !(await confirm(
+      `¿${accion} Piedra Eterna a ${poke.apodo || poke.especie_info.nombre}?`,
+    ))
+  )
+    return;
+
+  try {
+    await api.patch(`mis-pokemon/${poke.id}/`, {
+      piedra_eterna: !poke.piedra_eterna,
+    });
+    poke.piedra_eterna = !poke.piedra_eterna;
+  } catch (e) {
+    await alert("Error al cambiar el estado de la Piedra Eterna.");
   }
 };
 
@@ -54,7 +119,11 @@ onMounted(() => {
         <div class="pc-header">
           <h2>SISTEMA DE ALMACENAMIENTO</h2>
           <router-link to="/dashboard" class="btn-volver"
-            >⬅ Apagar PC</router-link
+            ><i
+              class="bi bi-power"
+              aria-hidden="true"
+              style="margin-right: 6px"></i>
+            Apagar PC</router-link
           >
         </div>
 
@@ -68,15 +137,31 @@ onMounted(() => {
                 v-for="poke in equipo"
                 :key="poke.id"
                 class="card-mini"
-                @click="moverPokemon(poke)">
+                @click="moverPokemon(poke)"
+                :class="{ 'card-shiny': poke.es_shiny }">
                 <div class="sprite-bg">
-                  <img :src="poke.especie_info.sprite_url" alt="" />
+                  <img
+                    :src="
+                      getLocalPath(
+                        poke.es_shiny
+                          ? poke.especie_info.sprite_shiny_url
+                          : poke.especie_info.sprite_url,
+                      )
+                    "
+                    alt="" />
                 </div>
                 <div class="info">
-                  <strong>{{ poke.apodo || poke.especie_info.nombre }}</strong>
+                  <strong
+                    class="nombre-pokemon"
+                    @click.stop="cambiarApodo(poke, $event)"
+                    title="Clic para renombrar"
+                    >{{ poke.apodo || poke.especie_info.nombre }}</strong
+                  >
                   <span>Nv. {{ poke.nivel }}</span>
-                  <span class="flecha">Depositar ➡ </span>
                 </div>
+                <span class="flecha"
+                  >Depositar <i class="bi bi-arrow-right" aria-hidden="true"></i
+                ></span>
               </div>
             </div>
           </div>
@@ -88,13 +173,49 @@ onMounted(() => {
                 v-for="poke in caja"
                 :key="poke.id"
                 class="card-mini caja-mini"
-                @click="moverPokemon(poke)">
+                @click="moverPokemon(poke)"
+                :class="{ 'card-shiny': poke.es_shiny }">
                 <div class="sprite-bg">
-                  <img :src="poke.especie_info.sprite_url" alt="" />
+                  <img
+                    :src="
+                      getLocalPath(
+                        poke.es_shiny
+                          ? poke.especie_info.sprite_shiny_url
+                          : poke.especie_info.sprite_url,
+                      )
+                    "
+                    alt="" />
                 </div>
                 <div class="info">
-                  <strong>{{ poke.apodo || poke.especie_info.nombre }}</strong>
+                  <strong
+                    class="nombre-pokemon"
+                    @click.stop="cambiarApodo(poke, $event)"
+                    title="Clic para renombrar"
+                    >{{ poke.apodo || poke.especie_info.nombre }}</strong
+                  >
                   <span>Nv. {{ poke.nivel }}</span>
+                </div>
+                <br />
+                <div class="acciones-pokemon">
+                  <button
+                    @click="cambiarApodo(poke, $event)"
+                    class="btn-editar"
+                    title="Renombrar Pokémon">
+                    <i class="bi bi-pencil" aria-hidden="true"></i>
+                  </button>
+                  <button
+                    @click="alternarPiedraEterna(poke, $event)"
+                    class="btn-piedra"
+                    :class="{ activa: poke.piedra_eterna }"
+                    title="Piedra Eterna - Evita evolucionar">
+                    🪨
+                  </button>
+                  <button
+                    @click="liberarPokemon(poke, $event)"
+                    class="btn-liberar"
+                    title="Liberar Pokémon">
+                    <i class="bi bi-trash" aria-hidden="true"></i>
+                  </button>
                 </div>
                 <span class="flecha-hover"> ⬅ Retirar</span>
               </div>
@@ -183,7 +304,7 @@ onMounted(() => {
 }
 .grid-caja {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 }
 
 .card-mini {
@@ -191,7 +312,7 @@ onMounted(() => {
   align-items: center;
   gap: 15px;
   background: var(--elements-bg);
-  padding: 12px;
+  padding: 16px;
   border-radius: 10px;
   cursor: pointer;
   border: 4px solid var(--stroke);
@@ -207,8 +328,11 @@ onMounted(() => {
 .caja-mini {
   flex-direction: column;
   text-align: center;
-  gap: 5px;
+  gap: 10px;
   position: relative;
+  padding: 14px 12px;
+  min-height: 220px;
+  justify-content: space-between;
 }
 .sprite-bg {
   background: var(--main);
@@ -225,19 +349,23 @@ onMounted(() => {
 .info {
   display: flex;
   flex-direction: column;
-  font-size: 1.2rem;
+  gap: 4px;
+  font-size: 3rem;
 }
 .info strong {
   color: var(--headline);
   text-transform: uppercase;
   text-shadow: 1px 1px #000;
+  font-size: 1rem;
 }
 .info span {
   color: var(--tertiary);
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 .flecha {
-  color: #e74c3c;
+  color: #e74c3c !important;
   font-size: 1.2rem;
   margin-left: auto;
   font-weight: bold;
@@ -261,5 +389,128 @@ onMounted(() => {
 }
 .caja-mini:hover .flecha-hover {
   display: block;
+}
+
+/* Styling para Pokémon shiny */
+.card-shiny {
+  border-color: #f1c40f !important;
+  background: linear-gradient(
+    145deg,
+    var(--elements-bg),
+    rgba(255, 249, 200, 0.3)
+  ) !important;
+}
+
+/* Contenedor de acciones */
+.acciones-pokemon {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.btn-liberar {
+  background: #e74c3c;
+  border: 2px solid var(--stroke);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0px var(--stroke);
+}
+
+.btn-liberar:hover {
+  transform: scale(1.1);
+  background: #c0392b;
+  box-shadow: 3px 3px 0px var(--stroke);
+}
+
+.btn-liberar:active {
+  transform: scale(0.95);
+  box-shadow: 1px 1px 0px var(--stroke);
+}
+
+.caja-mini {
+  position: relative;
+}
+
+/* Nombre del Pokémon clickeable */
+.nombre-pokemon {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.nombre-pokemon:hover {
+  background: rgba(124, 77, 255, 0.2);
+  text-decoration: underline;
+}
+
+/* Botón para editar apodo */
+.btn-editar {
+  background: #3498db;
+  border: 2px solid var(--stroke);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0px var(--stroke);
+}
+
+.btn-editar:hover {
+  transform: scale(1.1);
+  background: #2980b9;
+  box-shadow: 3px 3px 0px var(--stroke);
+}
+
+.btn-editar:active {
+  transform: scale(0.95);
+  box-shadow: 1px 1px 0px var(--stroke);
+}
+
+.btn-piedra {
+  background: #95a5a6;
+  border: 2px solid var(--stroke);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0px var(--stroke);
+}
+
+.btn-piedra:hover {
+  transform: scale(1.1);
+  box-shadow: 3px 3px 0px var(--stroke);
+}
+
+.btn-piedra:active {
+  transform: scale(0.95);
+  box-shadow: 1px 1px 0px var(--stroke);
+}
+
+.btn-piedra.activa {
+  background: #f39c12;
+  border-color: #d68910;
+  box-shadow:
+    0 0 8px rgba(243, 156, 18, 0.6),
+    2px 2px 0px var(--stroke);
 }
 </style>

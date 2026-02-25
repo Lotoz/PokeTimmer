@@ -17,7 +17,7 @@ const registrar = async () => {
       email: email.value,
     });
 
-    alert("¡Registro exitoso! Bienvenido al mundo Pokémon.");
+    await alert("¡Registro exitoso! Bienvenido al mundo Pokémon.");
     router.push("/");
   } catch (e) {
     console.error(e);
@@ -87,7 +87,13 @@ const registrar = async () => {
         <button type="submit">Crear Cuenta</button>
       </form>
 
-      <p v-if="error" class="error">❌ {{ error }}</p>
+      <p v-if="error" class="error">
+        <i
+          class="bi bi-x-circle"
+          aria-hidden="true"
+          style="margin-right: 8px"></i>
+        {{ error }}
+      </p>
 
       <router-link to="/" class="link-back">
         ¿Ya tienes cuenta? Identifícate

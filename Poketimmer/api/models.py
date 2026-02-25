@@ -12,7 +12,9 @@ class Usuario(AbstractUser):
     
     # Configuración Pomodoro
     pomo_tiempo_trabajo = models.IntegerField(default=25) # Minutos
-    pomo_tiempo_descanso = models.IntegerField(default=5)
+    pomo_tiempo_descanso = models.IntegerField(default=5) # Minutos
+    pomo_tiempo_descanso_largo = models.IntegerField(default=30) # Minutos
+    pomo_ciclos = models.IntegerField(default=3) # Cantidad de ciclos antes del descanso largo
 
 # SISTEMA POKEMON (Pokedex)
 class Region(models.Model):
@@ -52,6 +54,7 @@ class PokemonUsuario(models.Model):
     en_equipo = models.BooleanField(default=False) # ¿Está en el dashboard?
     fecha_captura = models.DateTimeField(auto_now_add=True)
     es_shiny = models.BooleanField(default=False) # Para saber si el pokemon capturado es shiny o no
+    piedra_eterna = models.BooleanField(default=False) # Evita que el Pokémon evolucione
     def __str__(self):
         return f"{self.apodo or self.especie.nombre} de {self.entrenador.username}"
     #Para subir de nivel, se llama cada vez que el usuario gana experiencia (Ej: Completa tareas)
@@ -59,11 +62,15 @@ class PokemonUsuario(models.Model):
         self.experiencia += cantidad
         subio_nivel = False
         
-        # Lógica de nivel (Ej: Cada 100 de exp = 1 nivel)
-        while self.experiencia >= 100:
+        # Lógica de nivel (Ej: Cada 100 de exp = 1 nivel, máximo 100)
+        while self.experiencia >= 100 and self.nivel < 100:
             self.nivel += 1
             self.experiencia -= 100
             subio_nivel = True
+        
+        # Limitar experiencia si alcanzó nivel 100
+        if self.nivel >= 100:
+            self.experiencia = 0
             
         if subio_nivel:
             self.comprobar_evolucion()
@@ -71,6 +78,10 @@ class PokemonUsuario(models.Model):
         self.save()
 
     def comprobar_evolucion(self):
+        # No evoluciona si tiene Piedra Eterna
+        if self.piedra_eterna:
+            return
+        
         #  Verificamos si la especie actual TIENE una evolución configurada
         # verificamos si TIENE un nivel de evolución asignado
         #  Verificamos si el nivel actual del Pokémon alcanzó o superó esa meta
@@ -80,6 +91,23 @@ class PokemonUsuario(models.Model):
             
             # ¡Evolución! Cambiamos la especie a la nueva
             self.especie = self.especie.evolucion_siguiente
+    
+    def calcular_nivel_inicial(self):
+        """Calcula el nivel inicial basado en la cadena evolutiva.
+        Si el Pokémon capturado es una evolución posterior, inicia en el 
+        nivel requerido para evolucionarlo, sino inicia en nivel 1.
+        """
+        # Verificar qué evoluciones preceden a esta especie
+        pre_evoluciones = list(self.especie.pre_evolucion.all())
+        
+        # Si tiene pre-evoluciones, empezar en el nivel de evolución de la especie
+        if pre_evoluciones:
+            # Consideramos el nivel de evolución de la especie actual
+            # Ya que sería el nivel requerido para hacerlo evolucionar desde su forma anterior
+            if self.especie.nivel_evolucion:
+                return self.especie.nivel_evolucion
+        
+        return 1
 
 # TAREAS (Productividad)
 class Tarea(models.Model):

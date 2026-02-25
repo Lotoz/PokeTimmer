@@ -3,6 +3,9 @@ import { ref, onMounted } from "vue";
 import api from "../api/axios";
 import { useRouter } from "vue-router";
 import showAlert from "../utils/prettyAlert";
+import ProfileEditForm from "../components/ProfileEditForm.vue";
+import PasswordChangeForm from "../components/PasswordChangeForm.vue";
+import PomodoroConfigForm from "../components/PomodoroConfigForm.vue";
 
 const router = useRouter();
 
@@ -26,6 +29,8 @@ const passwordData = ref({
 const pomodoroData = ref({
   pomo_tiempo_trabajo: 25,
   pomo_tiempo_descanso: 5,
+  pomo_tiempo_descanso_largo: 30,
+  pomo_ciclos: 3,
 });
 
 const editMode = ref(false);
@@ -48,6 +53,8 @@ const cargarPerfil = async () => {
       pomodoroData.value = {
         pomo_tiempo_trabajo: usuario.value.pomo_tiempo_trabajo,
         pomo_tiempo_descanso: usuario.value.pomo_tiempo_descanso,
+        pomo_tiempo_descanso_largo: usuario.value.pomo_tiempo_descanso_largo,
+        pomo_ciclos: usuario.value.pomo_ciclos,
       };
       if (usuario.value.foto_perfil) {
         previewImage.value = usuario.value.foto_perfil;
@@ -156,9 +163,11 @@ const cambiarContrasena = async () => {
 const guardarPomodoro = async () => {
   if (
     pomodoroData.value.pomo_tiempo_trabajo < 1 ||
-    pomodoroData.value.pomo_tiempo_descanso < 1
+    pomodoroData.value.pomo_tiempo_descanso < 1 ||
+    pomodoroData.value.pomo_tiempo_descanso_largo < 1 ||
+    pomodoroData.value.pomo_ciclos < 1
   ) {
-    showAlert("Los tiempos deben ser mayores a 0", "error");
+    showAlert("Los tiempos y ciclos deben ser mayores a 0", "error");
     return;
   }
 
@@ -168,6 +177,8 @@ const guardarPomodoro = async () => {
     const res = await api.patch(`perfil/${usuario.value.id}/`, {
       pomo_tiempo_trabajo: pomodoroData.value.pomo_tiempo_trabajo,
       pomo_tiempo_descanso: pomodoroData.value.pomo_tiempo_descanso,
+      pomo_tiempo_descanso_largo: pomodoroData.value.pomo_tiempo_descanso_largo,
+      pomo_ciclos: pomodoroData.value.pomo_ciclos,
     });
 
     usuario.value = res.data;
@@ -199,7 +210,14 @@ const cancelarEdicion = () => {
   pomodoroData.value = {
     pomo_tiempo_trabajo: usuario.value.pomo_tiempo_trabajo,
     pomo_tiempo_descanso: usuario.value.pomo_tiempo_descanso,
+    pomo_tiempo_descanso_largo: usuario.value.pomo_tiempo_descanso_largo,
+    pomo_ciclos: usuario.value.pomo_ciclos,
   };
+};
+const logout = () => {
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("refresh_token");
+  router.push("/");
 };
 
 onMounted(cargarPerfil);
@@ -210,9 +228,13 @@ onMounted(cargarPerfil);
     <div class="page-card">
       <div class="profile-container">
         <div class="profile-header">
-          <h2>⚙️ MI PERFIL</h2>
+          <h2><i class="bi bi-gear" aria-hidden="true"></i> MI PERFIL</h2>
           <router-link to="/dashboard" class="btn-volver"
-            >⬅ Volver al Centro</router-link
+            ><i
+              class="bi bi-house"
+              aria-hidden="true"
+              style="margin-right: 6px"></i>
+            Ir al Inicio</router-link
           >
         </div>
 
@@ -220,7 +242,9 @@ onMounted(cargarPerfil);
 
         <div v-else class="profile-content">
           <!-- Vista de lectura -->
-          <div v-if="!editMode && !passwordMode" class="profile-view">
+          <div
+            v-if="!editMode && !passwordMode && !pomodoroMode"
+            class="profile-view">
             <div class="profile-card">
               <div class="profile-picture-container">
                 <img
@@ -248,7 +272,9 @@ onMounted(cargarPerfil);
                   <label class="info-label">Preferencias Pomodoro</label>
                   <p class="info-value">
                     Trabajo: {{ usuario.pomo_tiempo_trabajo }}min | Descanso:
-                    {{ usuario.pomo_tiempo_descanso }}min
+                    {{ usuario.pomo_tiempo_descanso }}min | D. Largo:
+                    {{ usuario.pomo_tiempo_descanso_largo }}min | Ciclos:
+                    {{ usuario.pomo_ciclos }}
                   </p>
                 </div>
               </div>
@@ -256,173 +282,79 @@ onMounted(cargarPerfil);
 
             <div class="button-group">
               <button @click="editMode = true" class="btn-edit">
-                ✏️ Editar Perfil
+                <i
+                  class="bi bi-pencil"
+                  aria-hidden="true"
+                  style="margin-right: 6px"></i>
+                Editar Perfil
               </button>
               <button @click="pomodoroMode = true" class="btn-pomodoro">
-                ⏱️ Configurar Pomodoro
+                <i
+                  class="bi bi-stopwatch"
+                  aria-hidden="true"
+                  style="margin-right: 6px"></i>
+                Configurar Pomodoro
               </button>
               <button @click="passwordMode = true" class="btn-password">
-                🔐 Cambiar Contraseña
+                <i
+                  class="bi bi-lock"
+                  aria-hidden="true"
+                  style="margin-right: 6px"></i>
+                Cambiar Contraseña
               </button>
-              <button @click="router.push('/')" class="btn-logout">
-                Cerrar Sesión
-              </button>
+              <button @click="logout" class="btn-logout">Cerrar Sesión</button>
             </div>
           </div>
 
           <!-- Modo edición de perfil -->
-          <div v-if="editMode && !passwordMode" class="edit-form">
-            <h3>Editar Información</h3>
-
-            <div class="form-group">
-              <label for="foto">Foto de Perfil</label>
-              <div class="image-upload">
-                <div v-if="previewImage" class="image-preview">
-                  <img :src="previewImage" alt="Preview" />
-                </div>
-                <input
-                  id="foto"
-                  type="file"
-                  accept="image/*"
-                  @change="handleImageSelect"
-                  class="file-input" />
-                <label for="foto" class="file-label">
-                  Seleccionar imagen
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="username">Nombre de Usuario</label>
-              <input
-                id="username"
-                v-model="formData.username"
-                type="text"
-                placeholder="Nombre de usuario"
-                class="form-input" />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Correo Electrónico</label>
-              <input
-                id="email"
-                v-model="formData.email"
-                type="email"
-                placeholder="correo@ejemplo.com"
-                class="form-input" />
-            </div>
-
-            <div class="button-group">
-              <button
-                @click="guardarPerfil"
-                :disabled="enviando"
-                class="btn-save">
-                {{ enviando ? "Guardando..." : "💾 Guardar Cambios" }}
-              </button>
-              <button
-                @click="cancelarEdicion"
-                :disabled="enviando"
-                class="btn-cancel">
-                ❌ Cancelar
-              </button>
-            </div>
-          </div>
+          <ProfileEditForm
+            v-if="editMode && !passwordMode && !pomodoroMode"
+            :formData="formData"
+            :previewImage="previewImage"
+            :enviando="enviando"
+            @update:formData="
+              (newData) => {
+                formData = newData;
+              }
+            "
+            @update:previewImage="
+              (newImage) => {
+                previewImage = newImage;
+              }
+            "
+            @image-selected="
+              (file) => {
+                selectedFile = file;
+              }
+            "
+            @save="guardarPerfil"
+            @cancel="cancelarEdicion" />
 
           <!-- Modo cambio de contraseña -->
-          <div v-if="!editMode && passwordMode" class="edit-form">
-            <h3>Cambiar Contraseña</h3>
-
-            <div class="form-group">
-              <label for="current-password">Contraseña Actual</label>
-              <input
-                id="current-password"
-                v-model="passwordData.current_password"
-                type="password"
-                placeholder="Tu contraseña actual"
-                class="form-input" />
-            </div>
-
-            <div class="form-group">
-              <label for="new-password">Nueva Contraseña</label>
-              <input
-                id="new-password"
-                v-model="passwordData.new_password"
-                type="password"
-                placeholder="Nueva contraseña (mín. 8 caracteres)"
-                class="form-input" />
-            </div>
-
-            <div class="form-group">
-              <label for="confirm-password">Confirmar Nueva Contraseña</label>
-              <input
-                id="confirm-password"
-                v-model="passwordData.confirm_password"
-                type="password"
-                placeholder="Repite la nueva contraseña"
-                class="form-input" />
-            </div>
-
-            <div class="button-group">
-              <button
-                @click="cambiarContrasena"
-                :disabled="enviando"
-                class="btn-save">
-                {{ enviando ? "Actualizando..." : "🔐 Cambiar Contraseña" }}
-              </button>
-              <button
-                @click="cancelarEdicion"
-                :disabled="enviando"
-                class="btn-cancel">
-                ❌ Cancelar
-              </button>
-            </div>
-          </div>
+          <PasswordChangeForm
+            v-if="!editMode && passwordMode && !pomodoroMode"
+            :passwordData="passwordData"
+            :enviando="enviando"
+            @update:passwordData="
+              (newData) => {
+                passwordData = newData;
+              }
+            "
+            @save="cambiarContrasena"
+            @cancel="cancelarEdicion" />
 
           <!-- Modo configurar Pomodoro -->
-          <div
+          <PomodoroConfigForm
             v-if="!editMode && !passwordMode && pomodoroMode"
-            class="edit-form">
-            <h3>⏱️ Configurar Pomodoro</h3>
-
-            <div class="form-group">
-              <label for="trabajo">Tiempo de Trabajo (minutos)</label>
-              <input
-                id="trabajo"
-                v-model.number="pomodoroData.pomo_tiempo_trabajo"
-                type="number"
-                min="1"
-                max="120"
-                class="form-input" />
-              <small>Actual: {{ pomodoroData.pomo_tiempo_trabajo }} min</small>
-            </div>
-
-            <div class="form-group">
-              <label for="descanso">Tiempo de Descanso (minutos)</label>
-              <input
-                id="descanso"
-                v-model.number="pomodoroData.pomo_tiempo_descanso"
-                type="number"
-                min="1"
-                max="60"
-                class="form-input" />
-              <small>Actual: {{ pomodoroData.pomo_tiempo_descanso }} min</small>
-            </div>
-
-            <div class="button-group">
-              <button
-                @click="guardarPomodoro"
-                :disabled="enviando"
-                class="btn-save">
-                {{ enviando ? "Guardando..." : "💾 Guardar Configuración" }}
-              </button>
-              <button
-                @click="cancelarEdicion"
-                :disabled="enviando"
-                class="btn-cancel">
-                ❌ Cancelar
-              </button>
-            </div>
-          </div>
+            :pomodoroData="pomodoroData"
+            :enviando="enviando"
+            @update:pomodoroData="
+              (newData) => {
+                pomodoroData = newData;
+              }
+            "
+            @save="guardarPomodoro"
+            @cancel="cancelarEdicion" />
         </div>
       </div>
     </div>

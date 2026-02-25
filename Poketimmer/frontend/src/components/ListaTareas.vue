@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import Pokeball from "./Pokeball.vue";
 
 const props = defineProps({
   tareas: Array,
@@ -37,7 +38,13 @@ const cancelarEdicion = () => {
 </script>
 <template>
   <section class="panel tareas-panel">
-    <h3>📋 Misiones Pendientes</h3>
+    <h3>
+      <i
+        class="bi bi-list-task"
+        aria-hidden="true"
+        style="margin-right: 8px"></i>
+      Misiones Pendientes
+    </h3>
 
     <form @submit.prevent="submitAgregar" class="add-task-form">
       <input
@@ -60,10 +67,10 @@ const cancelarEdicion = () => {
         <!-- Vista normal -->
         <template v-if="editingId !== tarea.id">
           <label class="tarea-content">
-            <input
-              type="checkbox"
-              :checked="tarea.completada"
-              @change="$emit('toggle', tarea)" />
+            <Pokeball
+              :completed="tarea.completada"
+              :size="32"
+              @click="$emit('toggle', tarea)" />
             <span class="tarea-texto">{{ tarea.titulo }}</span>
           </label>
           <div class="tarea-actions">
@@ -71,10 +78,10 @@ const cancelarEdicion = () => {
               @click="iniciarEdicion(tarea)"
               class="btn-edit-task"
               title="Editar">
-              ✏️
+              <i class="bi bi-pencil" aria-hidden="true"></i>
             </button>
             <button @click="$emit('eliminar', tarea.id)" class="btn-delete">
-              X
+              <i class="bi bi-trash" aria-hidden="true"></i>
             </button>
           </div>
         </template>
@@ -89,9 +96,11 @@ const cancelarEdicion = () => {
             placeholder="Editar tarea..." />
           <div class="edit-actions">
             <button @click="guardarEdicion(tarea.id)" class="btn-save">
-              ✓
+              <i class="bi bi-check2" aria-hidden="true"></i>
             </button>
-            <button @click="cancelarEdicion" class="btn-cancel-edit">✕</button>
+            <button @click="cancelarEdicion" class="btn-cancel-edit">
+              <i class="bi bi-x" aria-hidden="true"></i>
+            </button>
           </div>
         </template>
       </li>
@@ -232,11 +241,14 @@ const cancelarEdicion = () => {
 .btn-delete {
   background: transparent;
   color: #c0392b;
-  border: 3px solid #f8d6d6;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   padding: 6px 10px;
   font-weight: 800;
+}
+.btn-delete:hover {
+  background: rgba(192, 57, 43, 0.2);
 }
 
 @media (max-width: 720px) {

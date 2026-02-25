@@ -5,11 +5,13 @@ import PokedexView from './views/PokedexView.vue';
 import PCView from './views/PCView.vue';
 import RegistroView from './views/RegistroView.vue';
 import ProfileView from './views/ProfileView.vue';
+import TareasView from './views/TareasView.vue';
 
 const routes = [
     { path: '/', component: LoginView },
     { path: '/registro', component: RegistroView },
     { path: '/dashboard', component: DashboardView, meta: { requiresAuth: true } },//Protegido 
+    { path: '/tareas', component: TareasView, meta: { requiresAuth: true } },
     { path: '/pokedex', component: PokedexView, meta: { requiresAuth: true } },
     { path: '/pc', component: PCView, meta: { requiresAuth: true } },
     { path: '/perfil', component: ProfileView, meta: { requiresAuth: true } },
