@@ -34,5 +34,6 @@ extra/
 build/
 *.spec
 
-# Base de datos (mejor no subirla para que empiece limpia en Windows)
+# Base de datos 
 *.sqlite3
+*.txt

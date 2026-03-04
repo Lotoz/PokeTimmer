@@ -53,6 +53,10 @@ python manage.py migrate
 ```bash
 python manage.py cargar_kanto
 ```
+### Recuerda crear un superusuario para poder acceder al panel de administracion de Django: (tambien funciona como usuario para la aplicacion)
+```bash
+python manage.py createsuperuser
+```
 7. Ejecutar el servidor de desarrollo de Django:
 ```bash
 python manage.py runserver
