@@ -17,3 +17,22 @@ staticfiles/
 *.pyc
 *.pyo
 ven/
+# Node
+node_modules/
+dist/
+dist_electron/
+release/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Backend compilado y carpetas temporales
+extra/
+build/
+*.spec
+
+# Base de datos (mejor no subirla para que empiece limpia en Windows)
+*.sqlite3

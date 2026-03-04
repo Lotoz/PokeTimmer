@@ -10,34 +10,22 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
-import os
-import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# --- DETECCIÓN DE ENTORNO (PyInstaller / Electron) ---
-if getattr(sys, 'frozen', False):
-    # En producción (empaquetado): Guardamos en la carpeta del usuario
-    # Windows: C:\Users\TuUsuario\.miapp_data | Linux: ~/.miapp_data
-    USER_DATA_DIR = Path(os.path.expanduser('~')) / '.miapp_data'
-    USER_DATA_DIR.mkdir(exist_ok=True)
-else:
-    # En desarrollo: Guardamos en la carpeta del proyecto
-    USER_DATA_DIR = BASE_DIR
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-jdw%hlqv_7vw$k#dk9u^ed5yic!k-*vve9-meo0n1f!1wvhcta'
-# SECURITY WARNING: don't run with debug turned on in production!
-# Será True en desarrollo y False cuando lo compiles con PyInstaller
-DEBUG = not getattr(sys, 'frozen', False)
 
-# Permitimos que Electron (que corre local) se conecte
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -50,15 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # --- LIBRERIAS ---
-    'rest_framework',
-    'rest_framework_simplejwt', 
-    'corsheaders',
-    'api',
+    'rest_framework',      # Para la API
+    'corsheaders',         # Para conectar con Vue
+    'api',                 # App creada para la API
 ]
 
 MIDDLEWARE = [
+    #Middleware de CORS para permitir solicitudes desde el frontend
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware', 
+    'django.middleware.security.SecurityMiddleware',
+    #Middleware de seguridad de Django para proteger contra ataques comunes
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -93,9 +83,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': USER_DATA_DIR / 'db.sqlite3', 
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -161,10 +152,6 @@ CORS_ALLOW_CREDENTIALS = True
 AUTH_USER_MODEL = 'api.Usuario' # Usamos nuestro modelo de usuario personalizado
 
 # Configuración para manejar archivos de medios (fotos de perfil)
+import os
 MEDIA_URL = '/media/'
-# Las fotos se guardarán junto a la base de datos
-MEDIA_ROOT = USER_DATA_DIR / 'media'
-
-# Asegurarnos de que la carpeta media exista cuando arranque
-if not os.path.exists(MEDIA_ROOT):
-    os.makedirs(MEDIA_ROOT)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

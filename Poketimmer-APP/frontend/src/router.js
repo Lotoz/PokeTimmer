@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import LoginView from './views/LoginView.vue';
 import DashboardView from './views/DashboardView.vue';
 import PokedexView from './views/PokedexView.vue';
@@ -18,7 +18,8 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    //history: createWebHashHistory(),
+    history: createWebHashHistory(), 
     routes,
 });
 
@@ -26,8 +27,15 @@ const router = createRouter({
 // Si intentas ir a /dashboard sin tener token, te patea al Login
 router.beforeEach((to, from, next) => {
     const token = localStorage.getItem('access_token');
+    
+    // Si la ruta requiere auth y no hay token
     if (to.meta.requiresAuth && !token) {
-        next('/');
+        // Solo redirigir si no estamos ya yendo a la raíz
+        if (to.path !== '/') {
+            next('/');
+        } else {
+            next();
+        }
     } else {
         next();
     }

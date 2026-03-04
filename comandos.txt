@@ -89,3 +89,36 @@ User de prueba register
 Paco
 paco@paco.com
 paco12345.
+
+
+Pasos para Windows (Cero errores de permisos)
+
+    Compila el backend en Windows:
+
+        Debes ejecutar PyInstaller en una máquina con Windows para generar el pokeapi.exe. (Un ejecutable de Linux no funciona en Windows).
+    Bash
+
+    pyinstaller --name pokeapi --onedir run_server.py
+
+    Actualiza tu package.json:
+    Asegúrate de que el bloque build apunte correctamente al .exe.
+    JSON
+
+    "extraResources": [
+      {
+        "from": "extra/pokeapi",
+        "to": "backend",
+        "filter": ["**/*"]
+      }
+    ]
+
+    Verifica el main.cjs:
+    Tu código ya tiene la lógica para detectar Windows:
+    JavaScript
+
+    const executableName = process.platform === 'win32' ? 'pokeapi.exe' : 'pokeapi';
+
+    Empaqueta:
+    Bash
+
+    npx electron-builder --win

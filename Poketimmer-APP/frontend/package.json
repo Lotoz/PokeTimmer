@@ -10,7 +10,6 @@
     "preview": "vite preview",
     "electron": "electron ."
   },
-
   "dependencies": {
     "axios": "^1.13.5",
     "pinia": "^3.0.4",
@@ -21,5 +20,31 @@
     "@vitejs/plugin-vue": "^6.0.2",
     "electron": "^40.4.1",
     "vite": "^7.3.1"
+  },
+  "build": {
+    "appId": "PoketimmerV01",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "extra/pokeapi",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage",
+      "executableArgs": [
+        "--no-sandbox"
+      ]
+    }
   }
 }
