@@ -1,79 +1,92 @@
-### ESTADO EN DESAROLLO.
+# ⏱️ Poketimmer: Pomodoro App
 
-# Proyecto de DJANGO: Aplicacion portable pomodoro.
+![Estado](https://img.shields.io/badge/Estado-En_Desarrollo-orange?style=for-the-badge)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)
+![Electron](https://img.shields.io/badge/Electron-47848F?style=for-the-badge&logo=electron&logoColor=white)
 
-## Descripcion del proyecto:
+**Poketimmer** es una aplicación de escritorio diseñada para transformar la productividad en una aventura. Utilizando la **Técnica Pomodoro**, los usuarios pueden gestionar sus ciclos de trabajo y descanso mientras coleccionan y suben de nivel a sus Pokémon.
 
-Es una aplicacion de escritorio desarollada con un backend de DJANGO y un frontend de Vue.
-La aplicacion tiene por tematica, el mundo de pokemon y su objetivo es ayudar a los usuarios a mejorar su productividad utilizando la tecnica pomodoro, que consiste en trabajar durante 25 minutos y luego tomar un descanso de 5 minutos.
-Para ello, cada vez que se cumpla una tarea o el usuario complete un ciclo, sus pokemones subiran de nivel.
+---
 
-## Tecnologias utilizadas:
+## 🚀 Características Principales
 
-- DJANGO: Framework de desarrollo web en Python.
-- Vue: Framework de JavaScript para construir interfaces de usuario.
-- SQLite: Base de datos ligera y fácil de usar.
-- HTML/CSS: Para el diseño y la estructura de la aplicacion.
-- JavaScript: Para la logica del frontend.
-- PyInstaller: Para convertir la aplicacion en un ejecutable portable. (En desarrollo)
-- Docker: Para contenerizar la aplicacion y facilitar su despliegue. (En desarrollo)
+* **Ciclos Pomodoro:** Configura tiempos de trabajo (25 min) y descansos (5 min).
+* **Gamificación Pokémon:** * Sube de nivel a tus Pokémon al completar tareas o ciclos de enfoque.
+  * Gestión de equipo y acceso a la Pokédex.
+  * Sistema de evolución y variantes *Shiny*.
+* **Gestión de Tareas:** Lista integrada para organizar tus pendientes diarios.
+* **Multiplataforma:** Ejecutable portable (vía PyInstaller) y soporte para entorno de escritorio con Electron.
 
-## Instalacion y uso:
+---
 
-1. Clonar el repositorio:
+## 🛠️ Tecnologías Utilizadas
+
+| Backend | Frontend | Otros |
+| :--- | :--- | :--- |
+| **Django** (Python) | **Vue.js** 3 | **SQLite** (DB) |
+| **Django REST Framework** | **Vite** | **Docker** (En proceso) |
+| **PyInstaller** | **Electron** | **Axios** |
+
+---
+
+## ⚙️ Instalación y Configuración
+
+Sigue estos pasos para levantar el entorno de desarrollo local:
+
+### 1. Clonar y Preparar el Backend
+
 ```bash
-git clone
-```
-2. Navegar al directorio del proyecto:
-```bash
+# Clonar el repositorio
+git clone [https://github.com/tu-usuario/Poketimmer.git](https://github.com/tu-usuario/Poketimmer.git)
 cd Poketimmer/Poketimmer-APP
-```
-#### Recomendacion usar un entorno virtual para instalar las dependencias de Python:
-```bash
+
+# Crear y activar entorno virtual
 python -m venv env
-source env/bin/activate  # En Windows: env\Scripts\activate
-```
-3. Instalar las dependencias de Python:
-```bash
+# Windows: env\Scripts\activate | Unix: source env/bin/activate
+
+# Instalar dependencias
 pip install -r requirements.txt
+
+# Ejecutar migraciones y cargar datos iniciales
+python manage.py migrate
+python manage.py cargar_kanto
+
+# Crear usuario administrador (usado para login en la app)
+python manage.py createsuperuser
 ```
-4. Navegar al directorio del frontend y instalar las dependencias de JavaScript:
+
+### 2. Configurar el Frontend
+
 ```bash
 cd frontend
 npm install
+npm run dev
 ```
 
-5. Volver al directorio raiz y ejecutar las migraciones de Django:
+## 🖥️ Ejecución
 
+Para que la aplicación funcione correctamente, debes iniciar ambos servicios:
+
+-Backend (Terminal 1):
 ```bash
-cd ..
-python manage.py migrate
-```
-6. Cargar la base de datos de pokemon con el script de carga:
-```bash
-python manage.py cargar_kanto
-```
-### Recuerda crear un superusuario para poder acceder al panel de administracion de Django: (tambien funciona como usuario para la aplicacion)
-```bash
-python manage.py createsuperuser
-```
-7. Ejecutar el servidor de desarrollo de Django:
-```bash
+cd Poketimmer/Poketimmer-APP
+source env/bin/activate  # Activar entorno virtual
 python manage.py runserver
 ```
-8. En otra terminal, navegar al directorio del frontend y ejecutar el servidor de desarrollo de Vue:
+-Frontend (Terminal 2):
 ```bash
-cd frontend
-npm run serve
+cd Poketimmer/Poketimmer-APP/frontend
+npm run dev
 ```
-9. Abrir el navegador y acceder a `http://localhost:5173` para ver la aplicacion en funcionamiento. 
+Luego, abre tu navegador y accede a `http://localhost:5173` para interactuar con Poketimmer.
 
-Optional: Si quieres ver la version electron de la aplicacion, puedes ejecutar el siguiente comando en el directorio del frontend, luego de ejecutar los anteriores pasos para iniciar el backend y el frontend:
+-Versión Desktop (Opcional):
 ```bash
 npm run electron:serve
 ```
 
-## Capturas de pantalla:
+## 📸 Galería de Capturas
 
 ![login](./pictures/login.png)
 ![register](./pictures/register.png)
@@ -88,74 +101,33 @@ npm run electron:serve
 ![pokedex](./pictures/editinfo.png)
 ![pokedex](./pictures/tutorial.png)
 
-## Estructura del proyecto:
-
-```txt
-📦Poketimmer
- ┣ 📂api
- ┃ ┣ 📂management
- ┃ ┃ ┗ 📂commands
- ┃ ┃ ┃ ┗ 📜cargar_kanto.py
- ┃ ┣ 📂migrations
- ┃ ┃ ┣ 📜0001_initial.py
- ┃ ┃ ┣ 📜0002_alter_pokedexentry_sprite_url.py
- ┃ ┃ ┣ 📜0003_pokedexentry_evolucion_siguiente_and_more.py
- ┃ ┃ ┣ 📜0004_pokedexentry_tipo_secundario.py
- ┃ ┃ ┗ 📜0005_pokedexentry_sprite_shiny_url_and_more.py
- ┃ ┣ 📜admin.py
- ┃ ┣ 📜apps.py
- ┃ ┣ 📜models.py
- ┃ ┣ 📜serializers.py
- ┃ ┣ 📜urls.py
- ┃ ┗ 📜views.py
- ┣ 📂backend
- ┃ ┣ 📜asgi.py
- ┃ ┣ 📜settings.py
- ┃ ┣ 📜urls.py
- ┃ ┗ 📜wsgi.py
- ┣ 📂frontend
- ┃ ┣ 📂electron
- ┃ ┃ ┗ 📜main.cjs
- ┃ ┣ 📂public
- ┃ ┃ ┗ 📂pokemon
- ┃ ┃ ┣ 📂normal
- ┃ ┃ ┃ ┗ 📜 ... (151 pokemon sprites)
- ┃ ┃ ┣ 📂shiny
- ┃ ┃ ┃ ┗ 📜 ... (151 shiny pokemon sprites)
- ┃ ┃ ┗ 📜alola.jpg
- ┃ ┃ ┗ 📜vite.svg
+## 📂 Estructura del Proyecto
+```
+📦 Poketimmer
+ ┣ 📂 api             # Lógica de negocio, modelos y serializadores
+ ┃ ┣ 📂management    # Scripts personalizados (Carga de datos)
+ ┃ ┣ 📜models.py      # Definición de Pokémon, Tareas y Usuarios
+ ┃ ┗ 📜views.py       # Endpoints de la API
+ ┣ 📂backend          # Configuración principal de Django
+ ┣ 📂frontend         # Aplicación Vue.js 3
+ ┃ ┣ 📂electron      # Configuración de App de escritorio
  ┃ ┣ 📂src
- ┃ ┃ ┣ 📂api
- ┃ ┃ ┃ ┗ 📜axios.js
- ┃ ┃ ┣ 📂assets
- ┃ ┃ ┃ ┗ 📜vue.svg
- ┃ ┃ ┣ 📂components
- ┃ ┃ ┃ ┣ 📜EquipoPokemon.vue
- ┃ ┃ ┃ ┣ 📜ListaTareas.vue
- ┃ ┃ ┃ ┗ 📜PomodoroTimer.vue
- ┃ ┃ ┣ 📂utils
- ┃ ┃ ┃ ┗ 📜prettyAlert.js
- ┃ ┃ ┣ 📂views
- ┃ ┃ ┃ ┣ 📜DashboardView.vue
- ┃ ┃ ┃ ┣ 📜LoginView.vue
- ┃ ┃ ┃ ┣ 📜PCView.vue
- ┃ ┃ ┃ ┣ 📜PokedexView.vue
- ┃ ┃ ┃ ┣ 📜ProfileView.vue
- ┃ ┃ ┃ ┗ 📜RegistroView.vue
- ┃ ┃ ┣ 📜App.vue
- ┃ ┃ ┣ 📜main.js
- ┃ ┃ ┣ 📜router.js
- ┃ ┃ ┗ 📜style.css
- ┃ ┣ 📜index.html
- ┃ ┣ 📜package.json
- ┃ ┗ 📜vite.config.js
- ┣ 📂media
- ┃ ┗ 📂profile(fotos de perfil)
- ┣ 📜.env.example
- ┣ 📜db.sqlite3
+ ┃ ┃ ┣ 📂components  # Componentes reutilizables (Timer, Equipo)
+ ┃ ┃ ┗ 📂views       # Vistas principales (Pokedex, Login, PC)
  ┣ 📜manage.py
- ┣ 📜pokedex.json
  ┗ 📜requirements.txt
 ```
 
-## Este proyecto esta en desarrollo, por lo que se planea agregar nuevas funcionalidades y mejoras en el futuro, como la version electron de la aplicacion y la contenerizacion con Docker. Cualquier contribucion es bienvenida!
+🛠️ Próximas Mejoras (Roadmap)
+
+    [ ] Finalizar la contenerización con Docker.
+
+    [ ] Optimizar el ejecutable con PyInstaller.
+
+    [ ] Implementar notificaciones de escritorio al finalizar ciclos.
+
+    [ ] Añadir sonidos clásicos de la franquicia.
+
+    [ ] Integrar más regiones y Pokémon en futuras actualizaciones.
+
+Desarrollado con ❤️ para entrenadores productivos.
