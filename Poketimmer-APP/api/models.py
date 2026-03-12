@@ -6,7 +6,6 @@ from django.contrib.auth.models import AbstractUser
 
 #  USUARIO PERSONALIZADO
 class Usuario(AbstractUser):
-    # Campos extra además de usuario/contraseña
     foto_perfil = models.ImageField(upload_to='perfiles/', null=True, blank=True)
     tema_app = models.CharField(max_length=50, default='light') 
     
@@ -18,7 +17,7 @@ class Usuario(AbstractUser):
 
 # SISTEMA POKEMON (Pokedex)
 class Region(models.Model):
-    nombre = models.CharField(max_length=50) # Ej: Kanto
+    nombre = models.CharField(max_length=50) 
     
     def __str__(self):
         return self.nombre
@@ -31,7 +30,6 @@ class PokedexEntry(models.Model):
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
     sprite_url = models.CharField(max_length=255, blank=True)
     sprite_shiny_url = models.CharField(max_length=255, blank=True, null=True) 
-    # NUEVOS CAMPOS PARA LA EVOLUCIÓN
     evolucion_siguiente = models.ForeignKey(
         'self', 
         on_delete=models.SET_NULL, 
@@ -39,7 +37,7 @@ class PokedexEntry(models.Model):
         blank=True, 
         related_name='pre_evolucion'
     )
-    nivel_evolucion = models.IntegerField(null=True, blank=True) # Ej: 16
+    nivel_evolucion = models.IntegerField(null=True, blank=True) 
 
     def __str__(self):
         return f"#{self.numero} {self.nombre}"
@@ -57,7 +55,6 @@ class PokemonUsuario(models.Model):
     piedra_eterna = models.BooleanField(default=False) # Evita que el Pokémon evolucione
     def __str__(self):
         return f"{self.apodo or self.especie.nombre} de {self.entrenador.username}"
-    #Para subir de nivel, se llama cada vez que el usuario gana experiencia (Ej: Completa tareas)
     def ganar_experiencia(self, cantidad):
         self.experiencia += cantidad
         subio_nivel = False
@@ -89,7 +86,7 @@ class PokemonUsuario(models.Model):
             self.especie.nivel_evolucion and 
             self.nivel >= self.especie.nivel_evolucion):
             
-            # ¡Evolución! Cambiamos la especie a la nueva
+            # Si todo correcto, el Pokémon evoluciona a la siguiente fase
             self.especie = self.especie.evolucion_siguiente
     
     def calcular_nivel_inicial(self):
@@ -107,7 +104,7 @@ class PokemonUsuario(models.Model):
             if self.especie.nivel_evolucion:
                 return self.especie.nivel_evolucion
         
-        return 1
+        return 90 # Si no tiene pre-evoluciones, es un pokemon experimentado, por lo que inicia en nivel 90
 
 # TAREAS (Productividad)
 class Tarea(models.Model):

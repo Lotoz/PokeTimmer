@@ -7,7 +7,6 @@ class PokedexSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = PokedexEntry
-        # AÑADIDO: 'sprite_shiny_url' para que el frontend pueda previsualizarlo
         fields = [
             'id', 'numero', 'nombre', 'tipo_principal', 
             'tipo_secundario', 'region_nombre', 'sprite_url', 'sprite_shiny_url'
@@ -19,8 +18,6 @@ class MiPokemonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PokemonUsuario
-        # AÑADIDO: 'es_shiny' para saber qué sprite mostrar en el Dashboard/PC
-        # AÑADIDO: 'piedra_eterna' para evitar que evolucione
         fields = ['id', 'apodo', 'nivel', 'experiencia', 'en_equipo', 'es_shiny', 'piedra_eterna', 'especie', 'especie_info']
         read_only_fields = ['nivel', 'experiencia', 'entrenador'] 
 
@@ -53,11 +50,11 @@ class UsuarioSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         password = validated_data.pop('password', None)
         
-        # Actualizar otros campos
+    
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
         
-        # Si se proporciona una contraseña, establecerla correctamente
+
         if password:
             instance.set_password(password)
         

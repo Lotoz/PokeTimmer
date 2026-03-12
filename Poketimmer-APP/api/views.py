@@ -2,6 +2,7 @@ from rest_framework import viewsets, permissions, generics, status
 from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.exceptions import PermissionDenied
 
 from .models import Usuario, PokedexEntry, PokemonUsuario, Tarea
 from .serializers import UsuarioSerializer, PokedexSerializer, MiPokemonSerializer, TareaSerializer, RegistroSerializer
@@ -27,7 +28,7 @@ class TareaViewSet(viewsets.ModelViewSet):
             for pokemon in equipo:
                 pokemon.ganar_experiencia(25) 
                 
-    # Acción de borrar mediante POST (coincide con frontend: tareas/borrar/)
+    # Acción de borrar mediante POST 
     @action(detail=False, methods=['post'], url_path='borrar')
     def borrar_por_post(self, request):
         item_id = request.data.get('id')

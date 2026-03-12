@@ -23,7 +23,7 @@ class Command(BaseCommand):
             # Lista para conectar las evoluciones después de que todos existan
             evoluciones_pendientes = []
             
-            # --- PRIMERA PASADA: CREAR O ACTUALIZAR DATOS BÁSICOS ---
+            # Este proceso se hace en dos pasos para evitar el ValueError al asignar evoluciones a objetos que aún no existen
             self.stdout.write("Creando registros de Pokémon...")
             for id_texto, datos in datos_diccionario.items():
                 numero = int(id_texto)
@@ -33,7 +33,7 @@ class Command(BaseCommand):
                 tipo_pri = tipos[0] if len(tipos) > 0 else "Normal"
                 tipo_sec = tipos[1] if len(tipos) > 1 else None
                 
-                # Lógica de rutas (usando tu función de media url)
+                # Lógica de rutas para sprites
                 def sprite_to_media_url(ruta):
                     if not ruta: return None
                     partes = ruta.replace('\\', '/').split('/')
@@ -45,7 +45,7 @@ class Command(BaseCommand):
                 ruta_normal = datos['sprites'][0]
                 ruta_shiny = datos['sprites'][1] if len(datos.get('sprites', [])) > 1 else None
 
-                # CREAR/ACTUALIZAR (Sin asignar la evolución todavía para evitar el ValueError)
+                # Creamos o actualizamos el Pokémon sin asignar la evolución aún
                 obj, created = PokedexEntry.objects.update_or_create(
                     numero=numero,
                     defaults={
@@ -59,7 +59,7 @@ class Command(BaseCommand):
                     }
                 )
 
-                # Guardamos la relación para la segunda pasada
+                # Guardamos la relación de evolución para procesarla después
                 siguiente = datos.get('next_evolution')
                 if siguiente:
                     evoluciones_pendientes.append({
@@ -70,7 +70,7 @@ class Command(BaseCommand):
                 status = "Nuevo" if created else "Actualizado"
                 self.stdout.write(f"{status}: #{numero} {datos['name']}")
 
-            # --- SEGUNDA PASADA: CONECTAR EVOLUCIONES (Ahora que todos existen) ---
+            # Conexion de evoluciones después de que todos los Pokémon estén creados
             self.stdout.write("🔗 Conectando líneas evolutivas...")
             for relacion in evoluciones_pendientes:
                 try:
@@ -78,7 +78,7 @@ class Command(BaseCommand):
                     # Buscamos la INSTANCIA del objeto destino
                     poke_destino = PokedexEntry.objects.get(numero=relacion['destino'])
                     
-                    # ASIGNAMOS EL OBJETO, NO EL ID
+                    # Asignamos la evolución al objeto origen y guardamos
                     poke_origen.evolucion_siguiente = poke_destino
                     poke_origen.save()
                 except PokedexEntry.DoesNotExist:

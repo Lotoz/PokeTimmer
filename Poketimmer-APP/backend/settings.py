@@ -19,9 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --- DETECCIÓN DE ENTORNO (PyInstaller / Electron) ---
 if getattr(sys, 'frozen', False):
-    # En producción (empaquetado): Guardamos en la carpeta del usuario
-    # Windows: C:\Users\TuUsuario\.miapp_data | Linux: ~/.miapp_data
-    USER_DATA_DIR = Path(os.path.expanduser('~')) / '.miapp_data'
+    # En producción (empaquetado): Se guarda  en la carpeta del usuario
+    # Windows: C:\Users\TuUsuario\.miapp_data | Linux: ~/.mipoke_data
+    USER_DATA_DIR = Path(os.path.expanduser('~')) / '.mipoke_data'
     USER_DATA_DIR.mkdir(exist_ok=True)
 else:
     # En desarrollo: Guardamos en la carpeta del proyecto
@@ -32,9 +32,10 @@ else:
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-jdw%hlqv_7vw$k#dk9u^ed5yic!k-*vve9-meo0n1f!1wvhcta'
+
 # SECURITY WARNING: don't run with debug turned on in production!
-# Será True en desarrollo y False cuando lo compiles con PyInstaller
-DEBUG = not getattr(sys, 'frozen', False)
+# Será True en desarrollo y False cuando lo compiles con PyInstaller  not getattr(sys, 'frozen', False)
+DEBUG = True
 
 # Permitimos que Electron (que corre local) se conecte
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
@@ -49,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # --- LIBRERIAS ---
     'rest_framework',
     'rest_framework_simplejwt', 
     'corsheaders',
@@ -154,7 +154,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-CORS_ALLOW_ALL_ORIGINS = True  # Para desarrollo es más fácil así
+CORS_ALLOW_ALL_ORIGINS = True  
 # Permitir credenciales (cookies/tokens)
 CORS_ALLOW_CREDENTIALS = True
 

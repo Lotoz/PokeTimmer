@@ -7,17 +7,15 @@ let backendProcess = null;
 function startBackend() {
     if (app.isPackaged) {
         const executableName = process.platform === 'win32' ? 'pokeapi.exe' : 'pokeapi';
-        // Usamos path.resolve para asegurar que la ruta sea absoluta y limpia
         const backendPath = path.resolve(process.resourcesPath, 'backend', executableName);
 
         console.log("Ruta detectada para backend:", backendPath);
 
         backendProcess = spawn(backendPath, [], {
-            // VITAL: Ejecutar el proceso con el directorio de trabajo correcto
             cwd: path.dirname(backendPath),
             env: {
                 ...process.env,
-                PYTHONUNBUFFERED: "1" // Para que los logs salgan en tiempo real
+                PYTHONUNBUFFERED: "1"
             }
         });
 
